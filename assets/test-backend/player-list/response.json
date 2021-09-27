@@ -1,0 +1,37 @@
+{
+	"status": "ok",
+	"list": [
+		{
+			"login": "ВладБумага",
+			"wins": 47,
+			"loses": 33,
+			"rocks": 22,
+			"papers": 202,
+			"scissors": 13
+		},
+		{
+			"login": "PaperSheet",
+			"wins": 13,
+			"loses": 1,
+			"rocks": 0,
+			"papers": 42,
+			"scissors": 0
+		},
+		{
+			"login": "ПетяЦуефа",
+			"wins": 0,
+			"loses": 23,
+			"rocks": 9,
+			"papers": 9,
+			"scissors": 9
+		},
+		{
+			"login": "СердцеКамень",
+			"wins": 7,
+			"loses": 3,
+			"rocks": 55,
+			"papers": 2,
+			"scissors": 3
+		}
+	]
+}
