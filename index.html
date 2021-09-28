@@ -18,6 +18,7 @@
       blocks: {},
       screens: {},
       renderScreen: function (screenName) {
+
         //Проходимся по массиву timers
         for (let timer of window.application.timers) {
           clearInterval(timer) //отменяем setInterval на каждом элементе
