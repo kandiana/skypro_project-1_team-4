@@ -9,7 +9,7 @@ const game = {
 	status: '',
 }
 
-const app = document.getElementById('.app')
+const app = document.querySelector('.app')
 
 window.application = {
 	blocks: {},
