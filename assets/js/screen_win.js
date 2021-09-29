@@ -4,7 +4,7 @@ window.application.blocks['lobbyButton'] = renderLobbyButton
 window.application.screens['winScreen'] = renderWinScreen
 
 
-function renderWinBlock(container) {
+function renderWinBlock(container) {                                  //создание блока с текстом победы
   const looseBlock = document.createElement("div");
 
   looseBlock.classList.add = "win-block";
@@ -15,7 +15,7 @@ function renderWinBlock(container) {
 
 
 
-function renderPlayButton(container) {
+function renderPlayButton(container) {                           //создание кнопки "Играть"
   const playButton = document.createElement("button");
   playButton.classList.add = "button";
 
@@ -26,7 +26,7 @@ function renderPlayButton(container) {
 
 
 
-function renderLobbyButton() {
+function renderLobbyButton() {                                          //создание кнопки "Перейти в лобби"
   const lobbyButton = document.createElement("button");
   lobbyButton.classList.add = "lobby-button";
 
@@ -35,7 +35,7 @@ function renderLobbyButton() {
   container.appendChild(lobbyButton);
 }
 
-function renderWinScreen () {
+function renderWinScreen () {                                       //функция отрисовки экрана победы
   app.textContent = ""
 
   window.application.renderBlock('winBlock', app)

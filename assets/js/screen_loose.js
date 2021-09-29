@@ -4,7 +4,7 @@ window.application.blocks['lobbyButton'] = renderLobbyButton
 window.application.screens['looseScreen'] = renderLooseScreen
 
 
-function renderLooseBlock(container) {
+function renderLooseBlock(container) {                          //создание инфомационного блока с текстом поражения
   const looseBlock = document.createElement("div");
 
   looseBlock.classList.add = "loose-block";
@@ -15,7 +15,7 @@ function renderLooseBlock(container) {
 
 
 
-function renderPlayButton(container) {
+function renderPlayButton(container) {                            //создание кнопки "Играть"
   const playButton = document.createElement("button");
   playButton.classList.add = "button";
 
@@ -26,7 +26,7 @@ function renderPlayButton(container) {
 
 
 
-function renderLobbyButton() {
+function renderLobbyButton() {                                         //создание кнопки "Перейти в лобби"
   const lobbyButton = document.createElement("button");
   lobbyButton.classList.add = "lobby-button";
 
@@ -35,7 +35,7 @@ function renderLobbyButton() {
   container.appendChild(lobbyButton);
 }
 
-function renderLooseScreen () {
+function renderLooseScreen () {                                     //функция отрисовки экрана поражения
   app.textContent = ""
 
   window.application.renderBlock('looseBlock', app)
