@@ -1,4 +1,14 @@
 {
-	"status": "error",
-	"message": "no game id"
+	"status": "ok",
+	"game-status": {
+		"status": "waiting-for-your-move",
+		"enemy": {
+			"login": "ВладБумага",
+			"wins": 47,
+			"loses": 33,
+			"rocks": 22,
+			"papers": 202,
+			"scissors": 13
+		}
+	}
 }
