@@ -30,7 +30,7 @@ function renderLobbyButton() {                                          //соз
   const lobbyButton = document.createElement("button");
   lobbyButton.classList.add = "lobby-button";
 
-  playButton.addEventListener('touch', () => {})
+  lobbyButton.addEventListener('touch', () => {})
   
   container.appendChild(lobbyButton);
 }
@@ -42,8 +42,8 @@ function renderWinScreen () {                                       //функц
   window.application.renderBlock('playButton', app)
   window.application.renderBlock('lobbyButton', app)
 
-  playButton.textContent = "Играть еще";
   looseBlock.textContent = "Вы победили!";
+  playButton.textContent = "Играть еще";
   lobbyButton.textContent = "Перейти в лобби";  
 }
 

@@ -42,8 +42,8 @@ function renderLooseScreen () {                                     //функц
   window.application.renderBlock('playButton', app)
   window.application.renderBlock('lobbyButton', app)
 
-  playButton.textContent = "Играть еще";
   looseBlock.textContent = "Вы проиграли!";
+  playButton.textContent = "Играть еще";
   lobbyButton.textContent = "Перейти в лобби";  
 }
 
