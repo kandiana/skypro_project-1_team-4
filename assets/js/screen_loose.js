@@ -49,4 +49,4 @@ function renderLooseScreen () {                                     //функц
   
 }
 
-window.application.renderScreen('looseScreen');
+//window.application.renderScreen('looseScreen');

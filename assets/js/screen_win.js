@@ -49,4 +49,4 @@ function renderWinScreen () {                                       //функц
   
 }
 
-window.application.renderScreen('winScreen');
+ //window.application.renderScreen('winScreen');
