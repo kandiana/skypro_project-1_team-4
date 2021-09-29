@@ -21,7 +21,7 @@ function renderPlayButton(container) {                           //создан�
   playButton.classList.add = "button";
   playButton.textContent = "Играть еще";
 
-  playButton.addEventListener('click', () => {})
+  playButton.addEventListener('touchend', startGame)
  
   container.appendChild(playButton);
 }
@@ -33,7 +33,9 @@ function renderLobbyButton(container) {                                         
   lobbyButton.classList.add = "lobby-button";
   lobbyButton.textContent = "Перейти в лобби";  
 
-  lobbyButton.addEventListener('click', () => {})
+  lobbyButton.addEventListener('click', () => {
+    window.application.renderScreen('lobbyScreen')
+  })
   
   container.appendChild(lobbyButton);
 }
