@@ -6,6 +6,7 @@ window.application.screens['looseScreen'] = renderLooseScreen
 
 function renderLooseBlock(container) {                          //создание инфомационного блока с текстом поражения
   const looseBlock = document.createElement("div");
+  looseBlock.textContent = "Вы проиграли!";
 
   looseBlock.classList.add = "loose-block";
   
@@ -18,19 +19,21 @@ function renderLooseBlock(container) {                          //создани
 function renderPlayButton(container) {                            //создание кнопки "Играть"
   const playButton = document.createElement("button");
   playButton.classList.add = "button";
+  playButton.textContent = "Играть еще";
 
-  playButton.addEventListener('touch', () => {})
+  playButton.addEventListener('click', () => {})
  
   container.appendChild(playButton);
 }
 
 
 
-function renderLobbyButton() {                                         //создание кнопки "Перейти в лобби"
+function renderLobbyButton(container) {                                         //создание кнопки "Перейти в лобби"
   const lobbyButton = document.createElement("button");
   lobbyButton.classList.add = "lobby-button";
+  lobbyButton.textContent = "Перейти в лобби";  
 
-  lobbyButton.addEventListener('touch', () => {})
+  lobbyButton.addEventListener('click', () => {})
   
   container.appendChild(lobbyButton);
 }
@@ -41,10 +44,7 @@ function renderLooseScreen () {                                     //функц
   window.application.renderBlock('looseBlock', app)
   window.application.renderBlock('playButton', app)
   window.application.renderBlock('lobbyButton', app)
-
-  looseBlock.textContent = "Вы проиграли!";
-  playButton.textContent = "Играть еще";
-  lobbyButton.textContent = "Перейти в лобби";  
+  
 }
 
-window.application.renderLooseScreen('looseScreen');
+window.application.renderScreen('looseScreen');
