@@ -30,7 +30,7 @@ function renderLobbyButton() {                                         //соз�
   const lobbyButton = document.createElement("button");
   lobbyButton.classList.add = "lobby-button";
 
-  playButton.addEventListener('touch', () => {})
+  lobbyButton.addEventListener('touch', () => {})
   
   container.appendChild(lobbyButton);
 }
