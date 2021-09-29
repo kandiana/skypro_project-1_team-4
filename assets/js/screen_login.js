@@ -1,26 +1,26 @@
-// window.application.blocks['input'] = renderInput;
-// window.application.blocks['login-button'] = renderloginButton;
-// window.application.screens['auth'] = renderAuthScreen;
+window.application.blocks['input'] = renderInput;
+window.application.blocks['login-button'] = renderloginButton;
+window.application.screens['auth'] = renderAuthScreen;
 
-// function renderInput(container) {
-//   const input = document.querySelector('input');
-//   input.classList.add('input');
-//   container.appendChild(input);
-// }
+function renderInput(container) {
+  const input = document.querySelector('input');
+  input.classList.add('input');
+  container.appendChild(input);
+}
 
-// function renderloginButton(container) {
-//   const loginButton = document.querySelector('button');
-//   input.classList.add('button');
-//   loginButton.textContent = 'Начать играть';
-//   container.appendChild(loginButton);
-// }
+function renderloginButton(container) {
+  const loginButton = document.querySelector('button');
+  input.classList.add('button');
+  loginButton.textContent = 'Начать играть';
+  container.appendChild(loginButton);
+}
 
-// function renderAuthScreen() {
-//   app.textContent = '';
-//   window.application.renderBlock('input', app);
-//   window.application.renderBlock('login-button', app);
-// }
-// renderAuthScreen()
+function renderAuthScreen() {
+  app.textContent = '';
+  window.application.renderBlock('input', app);
+  window.application.renderBlock('login-button', app);
+}
+renderAuthScreen()
 
 
 
