@@ -23,13 +23,17 @@ window.application = {
 		}
 		window.application.timers = [] //очищаем массив
 
-		app.textContent = '';
+
 
 		//Проверяем существует ли страница, которую передаем в функцию
 		if (window.application.screens[screenName] === undefined) {
 			console.log(`Страница ${screenName} не существует`)
 			return;
 		}
+
+		//Очищаем содержимое экрана
+		app.textContent = '';
+
 		//Вызываем функцию из поля screens 
 		window.application.screens[screenName]()
 		console.log(`Страница ${screenName} отрисована`)
@@ -42,7 +46,7 @@ window.application = {
 			return;
 		}
 		//Вызываем функцию из поля blocks 
-		window.application.blocks[blockName](container)
+		return window.application.blocks[blockName](container)
 		console.log(`Блок ${blockName} отрисован`)
 	},
 
@@ -64,6 +68,7 @@ function renderExampleButton(container) {
 	});
 
 	container.appendChild(button)
+	return button;
 }
 
 function renderBlockTitle(container) {
@@ -72,6 +77,7 @@ function renderBlockTitle(container) {
 	title.textContent = 'Заголовок'
 
 	container.appendChild(title)
+	return title;
 }
 
 function renderExampleInput(container) {
@@ -79,6 +85,7 @@ function renderExampleInput(container) {
 	const input = document.createElement('input');
 
 	container.appendChild(input);
+	return input;
 }
 
 //Добавляем функции в поле объекта
