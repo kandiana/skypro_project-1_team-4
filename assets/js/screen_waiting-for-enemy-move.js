@@ -13,7 +13,7 @@ function renderEnemyMoveScreen() {
   //отрисовка экрана
   const loader = window.application.renderBlock('enemyMoveBlock', app);
   loader.textContent = 'Ожидание хода соперника';
-}
+
 
 //  window.application.renderScreen('playScreen')
 // window.application.renderScreen('enemyMoveScreen')
@@ -50,3 +50,4 @@ const timer = setInterval(
   500
 );
 window.application.timers.push(timer);
+}
