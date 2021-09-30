@@ -15,9 +15,6 @@ function renderEnemyMoveScreen() {                              //отрисов
     loader.textContent = 'Ожидание хода соперника'
 }
 
-//  window.application.renderScreen('playScreen')
-// window.application.renderScreen('enemyMoveScreen')
-
 const requestParameters = {
     token: window.application.player.token,
     id: window.application.game.id,
@@ -45,3 +42,6 @@ switch (data['game-status'].status) {                                   //кон
 const timer = setInterval(() => request('game-status', requestParameters, recievedData), 500)
 window.application.timers.push(timer)
 }
+
+//  window.application.renderScreen('playScreen')
+// window.application.renderScreen('enemyMoveScreen')

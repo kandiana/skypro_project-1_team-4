@@ -50,4 +50,4 @@ function renderLooseScreen() {
   playButton.textContent = 'Играть еще';
 }
 
-//window.application.renderScreen('looseScreen');
+//window.application.renderScreen('looseScreen')

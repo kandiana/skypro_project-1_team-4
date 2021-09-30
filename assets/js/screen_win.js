@@ -47,4 +47,4 @@ function renderWinScreen () {                                     //функци
 	playButton.textContent = 'Играть еще'
 }
 
-//window.application.renderScreen('winScreen');
+//window.application.renderScreen('winScreen')
