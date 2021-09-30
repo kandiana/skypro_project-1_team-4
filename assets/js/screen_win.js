@@ -12,8 +12,6 @@ function renderWinBlock(container) {
   return winBlock;
 }
 
-startGame()
-
 function renderLobbyButton(container) {
   //создание кнопки "Перейти в лобби"
   const lobbyButton = document.createElement('button');

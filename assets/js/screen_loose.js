@@ -11,7 +11,6 @@ function renderLooseBlock(container) {
 
   return looseBlock;
 }
-  startGame()
 
 function renderLobbyButton(container) {
   //создание кнопки "Перейти в лобби"
