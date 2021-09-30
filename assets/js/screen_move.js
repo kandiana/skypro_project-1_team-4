@@ -69,7 +69,7 @@ function renderPlayBlock(container) {
                     window.application.renderScreen('winScreen')
                     break
 
-                case 'loose':
+                case 'lose':
                     window.application.renderScreen('looseScreen')
                     break
             }
