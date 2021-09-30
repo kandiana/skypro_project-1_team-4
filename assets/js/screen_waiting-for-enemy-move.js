@@ -19,10 +19,9 @@ function renderEnemyMoveScreen() {                              //отрисов
 // window.application.renderScreen('enemyMoveScreen')
 
 const requestParameters = {
-    token: player.token,
-    id: game.id,
-    move: `${e.target.dataset.name}`
-}
+    token: window.application.player.token,
+    id: window.application.game.id,
+  };
 
 function recievedData(responseText) {
          const data = JSON.parse(responseText)
