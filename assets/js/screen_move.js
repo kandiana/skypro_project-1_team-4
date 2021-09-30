@@ -30,24 +30,19 @@ function renderPlayBlock(container) {
 
     //отрисовка кнопки "Камень"
     const rock = window.application.renderBlock('moveButton', div)
-    const data_name_rock = document.createAttribute('data-name')
-    rock.setAttributeNode(data_name_rock)
-    data_name_rock.value = 'rock'
+
+    rock.dataset.name = 'rock'
     rock.textContent = 'Камень'
 
     //отрисовка кнопки "Ножницы"
     const scissors = window.application.renderBlock('moveButton', div)
-    const data_name_scissors = document.createAttribute('data-name')
-    scissors.setAttributeNode(data_name_scissors)
-    data_name_scissors.value = 'scissors'
+    scissors.dataset.name = 'scissors'
     scissors.textContent = 'Ножницы'
 
     //отрисовка кнопки "Бумага"
 
     const paper = window.application.renderBlock('moveButton', div)
-    const data_name_paper = document.createAttribute('data-name')
-    paper.setAttributeNode(data_name_paper)
-    data_name_paper.value = 'paper'
+    paper.dataset.name = 'paper'
     paper.textContent = 'Бумага'
 
     //По нажатию на кнопку отправляем запрос
