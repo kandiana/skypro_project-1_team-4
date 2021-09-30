@@ -94,8 +94,6 @@ function processRecievedGameStartData(responseText) {
 	window.application.game.id = startGameResponse['player-status'].game.id
 	window.application.player.status = startGameResponse['player-status'].status
 
-	console.log(game)
-
 	const requestParameters = {
 		token: window.application.player.token,
 		id: window.application.game.id,
@@ -108,11 +106,10 @@ function processRecievedGameStartData(responseText) {
 // Функция обработки запроса статуса игры
 function processRecievedGameStatusData(responseText) {
 	const gameResponse = JSON.parse(responseText)
-
-	window.application.game.status = gameResponse['game-status'].status
+	console.log(gameResponse)
 
 	// Подгружаем разные экраны в зависимости от наличия противника
-	switch (window.application.game.status) {
+	switch (gameResponse['game-status'].status) {
 		case 'waiting-for-start':
 			window.application.renderScreen('waitingForEnemyScreen')
 			break
