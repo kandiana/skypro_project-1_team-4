@@ -23,37 +23,46 @@ function renderInput(container) {
 }
 
 // Функция отрисовки кнопки "Начать играть"
-function renderloginButton(container) {const loginButton = document.createElement('button');
-loginButton.classList.add('button');
+function renderloginButton(container) {
+    const loginButton = document.createElement('button');
+    loginButton.classList.add('button');
 
-container.appendChild(loginButton);
+    container.appendChild(loginButton);
 
-return loginButton;
+    return loginButton;
 }
 
 // Функция отрисовки экрана Логин
 function renderAuthScreen() {
-app.textContent = ''; 
-const mainTitle = window.application.renderBlock('screenTitle', app);
-mainTitle.textContent = 'Камень, ножницы, бумага';
+    app.textContent = ''; 
+    const mainTitle = window.application.renderBlock('screenTitle', app);
+    mainTitle.textContent = 'Камень, ножницы, бумага';
 
-const input = window.application.renderBlock('input', app);
-input.placeholder = 'Ваш логин';
+    const input = window.application.renderBlock('input', app);
+    input.placeholder = 'Ваш логин';
 
-const loginButton = window.application.renderBlock('login-button', app);
-loginButton.textContent = 'Начать играть';
+    const loginButton = window.application.renderBlock('login-button', app);
+    loginButton.textContent = 'Начать играть';
 
-loginButton.addEventListener('touchend', function () {
-  player.login = input.value;
-
-      //Функция обработки полученных данных
-      function recievedData(responseText) {
-          const data = JSON.parse(responseText)
-          player.token = data.token
-
-      request('login', {login: ${player.login}}, recievedData)
-  };
-}
+    loginButton.addEventListener('touchend', function () {
+        if (input.value !== ''){
+            window.application.player.login = input.value;
+        }
+        
+        // достаем информацию, необходимую для запроса
+        const requestParameters = {
+            token: window.application.player.token,
+        }
+        // Функция обработки полученных данных
+        function processRecievedData(responseText) {
+            const data = JSON.parse(responseText)
+            window.application.player.token = data.token
+            if (window.application.player.token !== '') {
+                window.application.renderScreen('lobbyScreen')
+            }
+        }
+    request('login', requestParameters, processRecievedData)
+    }
 }
 
 // вызов отрисовки экрана
