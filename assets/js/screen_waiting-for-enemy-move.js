@@ -11,7 +11,7 @@ function renderEnemyMoveBlock(container) {                              //отр
 function renderEnemyMoveScreen() {                              //отрисовка экрана
     app.textContent = ''
     
-    const loader = window.application.renderBlock('enemyMoveBlock')
+    const loader = window.application.renderBlock('enemyMoveBlock', container)
     loader.textContent = 'Ожидание хода соперника'
 }
 
