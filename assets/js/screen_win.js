@@ -6,7 +6,7 @@ window.application.screens['winScreen'] = renderWinScreen
 function renderWinBlock(container) {                          //создание инфомационного блока с текстом победы
   const winBlock = document.createElement('div');
   container.appendChild(winBlock)
-  winBlock.classList.add = 'win-block';
+  winBlock.classList.add('win-block');
   
   return winBlock
 }
@@ -23,7 +23,7 @@ function renderPlayButton(container) {                            //создан
 
 function renderLobbyButton(container) {                                         //создание кнопки "Перейти в лобби"
   const lobbyButton = document.createElement('button');
-  lobbyButton.classList.add = 'lobby-button';
+  lobbyButton.classList.add('button');
   container.appendChild(lobbyButton)
 
   lobbyButton.addEventListener('touchend', () => {

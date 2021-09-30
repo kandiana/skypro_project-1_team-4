@@ -1,7 +1,7 @@
 window.application.blocks['enemyMoveBlock'] = renderEnemyMoveBlock
 window.application.screens['enemyMoveScreen'] = renderEnemyMoveScreen
 
-function renderEnemyMoveBlock(container) {
+function renderEnemyMoveBlock(container) {                              //отрисовка блока информации экрана
     const loader = document.createElement('h1')
     loader.classList.add('loader')
     container.appendChild(loader)
@@ -9,7 +9,7 @@ function renderEnemyMoveBlock(container) {
 }
 
 function renderEnemyMoveScreen() {                              //отрисовка экрана
-    app.textContent = ""
+    app.textContent = ''
     
     const loader = window.application.renderBlock('enemyMoveBlock')
     loader.textContent = 'Ожидание хода соперника'
@@ -18,11 +18,17 @@ function renderEnemyMoveScreen() {                              //отрисов
 //  window.application.renderScreen('playScreen')
 // window.application.renderScreen('enemyMoveScreen')
 
+const requestParameters = {
+    token: player.token,
+    id: game.id,
+    move: `${e.target.dataset.name}`
+}
+
 function recievedData(responseText) {
          const data = JSON.parse(responseText)
          console.log(data)
 
-switch (window.application.game.status) {
+switch (data['game-status'].status) {                                   //конструкция исхода событий игры
     case 'waiting-for-enemy-move':
         window.application.renderScreen('enemyMoveScreen')
         break
