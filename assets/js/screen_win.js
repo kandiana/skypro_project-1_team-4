@@ -5,11 +5,11 @@ window.application.screens['winScreen'] = renderWinScreen
 
 
 function renderWinBlock(container) {                          //создание инфомационного блока с текстом победы
-  const winBlock = document.createElement("div");
+  const winBlock = document.createElement('div');
   
   container.appendChild(winBlock)
 
-  winBlock.classList.add = "win-block";
+  winBlock.classList.add = 'win-block';
   
   return winBlock
 }
@@ -18,8 +18,8 @@ function renderWinBlock(container) {                          //создание
 
 
 function renderPlayButton(container) {                            //создание кнопки "Играть"
-  const playButton = document.createElement("button");
-  playButton.classList.add = "button";
+  const playButton = document.createElement('button');
+  playButton.classList.add = 'button';
   container.appendChild(playButton)
 
   playButton.addEventListener('touchend', startGame)
@@ -30,8 +30,8 @@ function renderPlayButton(container) {                            //создан
 
 
 function renderLobbyButton(container) {                                         //создание кнопки "Перейти в лобби"
-  const lobbyButton = document.createElement("button");
-  lobbyButton.classList.add = "lobby-button";
+  const lobbyButton = document.createElement('button');
+  lobbyButton.classList.add = 'lobby-button';
   container.appendChild(lobbyButton)
 
   lobbyButton.addEventListener('touchend', () => {
