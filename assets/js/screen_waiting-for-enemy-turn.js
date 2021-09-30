@@ -17,24 +17,34 @@ function renderEnemyMoveScreen() {                              //отрисов
     loader.textContent = 'Ожидание хода соперника'
 }
 
-
-
-if (data["game-status"].status === 'waiting-for-start') {
-    return
-  }
 //  window.application.renderScreen('playScreen')
 // window.application.renderScreen('enemyMoveScreen')
 
 
 
-function recievedData(responseText) {
-    const data = JSON.parse(responseText)
-    console.log(data)
-    switch (data["game-status"].status !== 'waiting-for-enemy-move') {
-        window.application.renderScreen('playScreen')
-    }
-    case  (data["game-status"].status !== 'waiting-for-enemy-move')
-}
+// function recievedData(responseText) {
+//     const data = JSON.parse(responseText)
+//     console.log(data)
+//     switch (data["game-status"].status !== 'waiting-for-enemy-move') {
+//         window.application.renderScreen('playScreen')
+//     }
+//     case  (data["game-status"].status !== 'waiting-for-enemy-move')
+// }
 
 const timer = setInterval(() => request('game-status', requestParameters, recievedData), 500)
 window.application.timers.push(timer)
+
+switch (window.application.game.status) {
+    case 'waiting-for-enemy-move':
+        window.application.renderScreen('enemyMoveScreen')
+        break
+    case 'waiting-for-your-move':
+            window.application.renderScreen('playScreen')
+        break
+    case 'win':
+            window.application.renderScreen('winScreen')
+        break
+    case 'loose':
+            window.application.renderScreen('looseScreen')
+        break    
+}    
