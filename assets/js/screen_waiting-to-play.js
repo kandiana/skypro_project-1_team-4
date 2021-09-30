@@ -18,6 +18,8 @@ function renderWaitingForEnemyScreen() {
     const requestParameters = {
         token: window.application.player.token,
         id: window.application.game.id,
+        move: `${e.target.dataset.name}`
+
     }
 
     //Функция обработки полученных данных
