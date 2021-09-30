@@ -1,4 +1,4 @@
-const BACKEND_DOMEN = 'http://localhost:3000'
+const BACKEND_DOMEN = 'https://79c4-178-64-139-61.ngrok.io/'
 
 const app = document.querySelector('.app')
 
