@@ -1,15 +1,15 @@
-window.application.blocks['looseBlock'] = renderLooseBlock;
+window.application.blocks['loseBlock'] = renderLoseBlock;
 window.application.blocks['playButton'] = renderPlayButton;
 window.application.blocks['lobbyButton'] = renderLobbyButton;
-window.application.screens['looseScreen'] = renderLooseScreen;
+window.application.screens['loseScreen'] = renderLoseScreen;
 
-function renderLooseBlock(container) {
+function renderLoseBlock(container) {
   //создание инфомационного блока с текстом поражения
-  const looseBlock = document.createElement('div');
-  container.appendChild(looseBlock);
-  looseBlock.classList.add('loose-block');
+  const loseBlock = document.createElement('div');
+  container.appendChild(loseBlock);
+  loseBlock.classList.add('lose-block');
 
-  return looseBlock;
+  return loseBlock;
 }
 
 function renderLobbyButton(container) {
@@ -25,11 +25,11 @@ function renderLobbyButton(container) {
   return lobbyButton;
 }
 
-function renderLooseScreen() {
+function renderLoseScreen() {
   //функция отрисовки экрана поражения
 
-  const looseBlock = window.application.renderBlock('looseBlock', app);
-  looseBlock.textContent = 'Вы проиграли!';
+  const loseBlock = window.application.renderBlock('loseBlock', app);
+  loseBlock.textContent = 'Вы проиграли!';
 
   const lobbyButton = window.application.renderBlock('lobbyButton', app);
   lobbyButton.textContent = 'Перейти в лобби'
