@@ -28,8 +28,8 @@ function renderLobbyButton(container) {
 function renderWinScreen() {
   //функция отрисовки экрана победы
 
-  const looseBlock = window.application.renderBlock('winBlock', app);
-  looseBlock.textContent = 'Вы победили!';
+  const winBlock = window.application.renderBlock('winBlock', app);
+  winBlock.textContent = 'Вы победили!';
 
   const lobbyButton = window.application.renderBlock('lobbyButton', app);
   lobbyButton.textContent = 'Перейти в лобби';
