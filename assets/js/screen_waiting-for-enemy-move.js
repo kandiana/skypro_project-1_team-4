@@ -38,7 +38,7 @@ function renderEnemyMoveScreen() {
         window.application.renderScreen('winScreen');
         break;
       case 'lose':
-        window.application.renderScreen('looseScreen');
+        window.application.renderScreen('loseScreen');
         break;
     }
   }
