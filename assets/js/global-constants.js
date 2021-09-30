@@ -9,6 +9,8 @@ const game = {
 	status: '',
 }
 
+const backendDomen = 'http://localhost:3000'
+
 const app = document.querySelector('.app')
 
 // тоже своеобразная константа: на телефонах ест адресная строка, которая отъедает кусок от экрана неизвестного размера
