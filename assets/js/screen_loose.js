@@ -11,19 +11,7 @@ function renderLooseBlock(container) {
 
   return looseBlock;
 }
-
-function renderPlayButton(container) {
-  //создание кнопки "Играть"
-  const playButton = document.createElement('button');
-  playButton.classList.add('button');
-  container.appendChild(playButton);
-
-  playButton.addEventListener('touchend', () => {
-    window.application.renderScreen('playScreen');
-  });
-
-  return playButton;
-}
+  startGame()
 
 function renderLobbyButton(container) {
   //создание кнопки "Перейти в лобби"
