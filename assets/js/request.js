@@ -14,7 +14,7 @@ function request(url, parameters, onSuccess) {
 	}
 
 	// Создаем ссылку для запроса
-	const requestURL = `${backendDomen}/${url}?${requestParameters.join('&')}`
+	const requestURL = `${BACKEND_DOMEN}/${url}?${requestParameters.join('&')}`
 
 	// Открываем запрос и посылаем его с созданной ссылкой
 	const xhr = new XMLHttpRequest()

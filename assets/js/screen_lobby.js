@@ -21,7 +21,7 @@ function renderPlayersList(container) {
 
 	// достаем информацию, необходимую для запроса
 	const requestParameters = {
-		token: player.token,
+		token: window.application.player.token,
 	}
 
 	// запрашиваем список залогиненных игроков каждую секунду
@@ -79,7 +79,7 @@ function renderPlayButton(container) {
 // Функция реакции на нажатие кнопки "играть"
 function startGame(event) {
 	const requestParameters = {
-		token: player.token,
+		token: window.application.player.token,
 	}
 
 	// запрашиваем начало игры
@@ -91,20 +91,15 @@ function processRecievedGameStartData(responseText) {
 	const startGameResponse = JSON.parse(responseText)
 	console.log(startGameResponse)
 
-	game.id = startGameResponse['player-status'].game.id
-	player.status = startGameResponse['player-status'].status
+	window.application.game.id = startGameResponse['player-status'].game.id
+	window.application.player.status = startGameResponse['player-status'].status
 
 	console.log(game)
 
 	const requestParameters = {
-		token: player.token,
-		id: game.id,
+		token: window.application.player.token,
+		id: window.application.game.id,
 	}
-
-	// const requestParameters = {
-	// 	token: player.token,
-	// 	'waiting-for-your-move': game.id,
-	// }
 
 	// запрашиваем статус игры (есть ли противник)
 	request('game-status', requestParameters, processRecievedGameStatusData)
@@ -114,10 +109,10 @@ function processRecievedGameStartData(responseText) {
 function processRecievedGameStatusData(responseText) {
 	const gameResponse = JSON.parse(responseText)
 
-	game.status = gameResponse['game-status'].status
+	window.application.game.status = gameResponse['game-status'].status
 
 	// Подгружаем разные экраны в зависимости от наличия противника
-	switch (game.status) {
+	switch (window.application.game.status) {
 		case 'waiting-for-start':
 			window.application.renderScreen('waitingForEnemyScreen')
 			break
