@@ -26,3 +26,7 @@ body {
 	text-align: center;
 	justify-self: flex-end;
 }
+
+input:focus{
+	outline: none;
+}
