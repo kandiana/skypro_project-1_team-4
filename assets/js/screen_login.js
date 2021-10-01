@@ -79,6 +79,7 @@ function renderAuthBlock(container) {
         window.application.player.login = input.value
         localStorage.setItem('login', input.value)
         
+        // Параметры, необходимые для запроса
         const requestParameters = {
             login: input.value
         }
