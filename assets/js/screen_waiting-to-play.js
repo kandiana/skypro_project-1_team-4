@@ -1,18 +1,12 @@
 window.application.screens['waitingForEnemyScreen'] = renderWaitingForEnemyScreen
-window.application.blocks['loading'] = renderBlockLoading
-
-//Функция отрисовки блока (пока без стилей, потом добавим что нибудь на время ожидания)
-function renderBlockLoading(container) {
-	const text = document.createElement('h1')
-	text.classList.add('loading')
-	text.textContent = 'Ожидание игры'
-	container.appendChild(text)
-	return text
-}
 
 //Функция отрисовки экрана
 function renderWaitingForEnemyScreen() {
-	window.application.renderBlock('loading', app)
+
+	const waitingForEnemyScreenTitle = window.application.renderBlock('screenTitle', app)
+	waitingForEnemyScreenTitle.textContent = 'Ждем подключения другого игрока'
+
+	window.application.renderBlock('blockLoading', app)
 
 	//Параметры, необходимые для запроса
 	const requestParameters = {

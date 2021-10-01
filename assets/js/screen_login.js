@@ -38,7 +38,7 @@ function renderAuthBlock(container) {
     container.appendChild(div)
 
     const mainTitle = window.application.renderBlock('mainTitle', div)
-    mainTitle.textContent = 'Камень, ножницы, бумага'
+    mainTitle.textContent = 'Камень ножницы бумага'
 
     const input = window.application.renderBlock('input', div)
     input.placeholder = 'Введите логин'
@@ -64,6 +64,7 @@ function renderAuthBlock(container) {
 
     //По нажатию на кнопку отправляем запрос
     loginbutton.addEventListener('touchend', function () {
+        window.application.renderScreen('loadingScreen')
 
         //Проверяем, если в поле ввода ничего нет, выходим из функции
         if (input.value === '') {
@@ -95,7 +96,42 @@ function renderAuthBlock(container) {
                 if (data['player-status'].status === 'lobby') {
                     window.application.renderScreen('lobbyScreen')
                 } else if (data['player-status'].status === 'game') {
-                    window.application.renderScreen('playScreen')
+                    //Делаем запрос на статус игры
+                    const requestParameters = {
+                        token: window.application.player.token,
+                        id: window.application.game.id
+                    }
+                    console.log(requestParameters)
+
+                    function recievedData(responseText) {
+                        const data = JSON.parse(responseText)
+                        console.log(data)
+
+                        switch (data['game-status'].status) {
+                            case 'waiting-for-start':
+                                window.application.renderScreen('waitingForEnemyScreen')
+                                break
+
+                            case 'waiting-for-your-move':
+                                window.application.renderScreen('drawScreen')
+                                setTimeout(() => {
+                                    window.application.renderScreen('playScreen')
+                                }, 1000)
+
+                            case 'waiting-for-enemy-move':
+                                window.application.renderScreen('enemyMoveScreen')
+                                break
+
+                            case 'win':
+                                window.application.renderScreen('winScreen')
+                                break
+
+                            case 'lose':
+                                window.application.renderScreen('loseScreen')
+                                break
+                        }
+                    }
+                    request('game-status', requestParameters, recievedData)
                 }
 
             }
