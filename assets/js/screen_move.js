@@ -32,30 +32,31 @@ function renderPlayBlock(container) {
     const rock = window.application.renderBlock('moveButton', div)
 
     rock.dataset.name = 'rock'
-    rock.textContent = 'Камень'
+    rock.textContent = window.application.moves.rock
 
     //отрисовка кнопки "Ножницы"
     const scissors = window.application.renderBlock('moveButton', div)
     scissors.dataset.name = 'scissors'
-    scissors.textContent = 'Ножницы'
+    scissors.textContent = window.application.moves.scissors
 
     //отрисовка кнопки "Бумага"
 
     const paper = window.application.renderBlock('moveButton', div)
     paper.dataset.name = 'paper'
-    paper.textContent = 'Бумага'
+    paper.textContent = window.application.moves.paper
 
     //По нажатию на кнопку отправляем запрос
-    div.addEventListener('touchend', function (e) {
-        window.application.renderScreen('loadingScreen')
-
-        //Параметры, необходимые для запроса
-        const requestParameters = {
-            token: window.application.player.token,
-            id: window.application.game.id,
-            move: `${e.target.dataset.name}`,
-        }
-        window.application.game.move = `${e.target.dataset.name}`
+    //По нажатию на кнопку отправляем запрос
+	div.addEventListener(window.application['button-pressed'], function (e) {
+		console.log(e)
+		console.log(e.target.dataset.name)
+		//Параметры, необходимые для запроса
+		const requestParameters = {
+			token: window.application.player.token,
+			id: window.application.game.id,
+			move: `${e.target.dataset.name}`,
+		}
+		window.application.game.move = window.application.moves[`${e.target.dataset.name}`]
 
         console.log(requestParameters)
         //Функция обработки полученных данных

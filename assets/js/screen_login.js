@@ -19,6 +19,10 @@ function renderInput(container) {
     input.classList.add('input')
     container.appendChild(input)
 
+    if(window.application.player.login) {
+        input.value = window.application.player.login
+    }
+
     return input
 }
 
@@ -63,15 +67,18 @@ function renderAuthBlock(container) {
     loginbutton.textContent = 'Войти'
 
     //По нажатию на кнопку отправляем запрос
-    loginbutton.addEventListener('touchend', function () {
-        window.application.renderScreen('loadingScreen')
-
+    loginbutton.addEventListener(window.application['button-pressed'], function () {
         //Проверяем, если в поле ввода ничего нет, выходим из функции
         if (input.value === '') {
             return;
         }
 
-        //Параметры, необходимые для запроса
+        window.application.renderScreen('loadingScreen')
+
+        // Сохраняем введенные параметры
+        window.application.player.login = input.value
+        localStorage.setItem('login', input.value)
+        
         const requestParameters = {
             login: input.value
         }
@@ -152,4 +159,4 @@ function renderAuthScreen() {
     window.application.renderBlock('authBlock', app)
 }
 
-window.application.renderScreen('authScreen')
+//window.application.renderScreen('authScreen')
