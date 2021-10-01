@@ -15,7 +15,7 @@ function renderScreenTitle(container) {
 
 // Функция отрисовки списка игроков онлайн
 function renderPlayersList(container) {
-	const playersList = document.createElement('ul')
+	const playersList = document.createElement('div')
 	playersList.classList.add('lobby__players')
 	container.appendChild(playersList)
 
@@ -57,7 +57,7 @@ function processRecievedPlayersListData(responseText, container) {
 
 // Функция отрисовки одной строки списка игроков
 function renderPlayerInfoLine(container) {
-	const playerInfoLine = document.createElement('li')
+	const playerInfoLine = document.createElement('p')
 	playerInfoLine.classList.add('list-item')
 	container.appendChild(playerInfoLine)
 
@@ -114,6 +114,7 @@ function processRecievedGameStatusData(responseText) {
 			window.application.renderScreen('waitingForEnemyScreen')
 			break
 		case 'waiting-for-your-move':
+			window.application.game.enemy = gameResponse['game-status'].enemy.login
 			window.application.renderScreen('playScreen')
 			break
 	}
@@ -121,7 +122,9 @@ function processRecievedGameStatusData(responseText) {
 
 // Функция отрисовки экрана Лобби
 function renderLobbyScreen() {
-	app.textContent = ''
+	for (let item in window.application.game) {
+		item = undefined
+	}
 
 	const lobbyTitle = window.application.renderBlock('screenTitle', app)
 	lobbyTitle.textContent = 'Лобби'
