@@ -3,7 +3,7 @@ window.application.screens['enemyMoveScreen'] = renderEnemyMoveScreen;
 
 function renderEnemyMoveBlock(container) {
   //отрисовка блока информации экрана
-  const loader = document.createElement('h1');
+  const loader = document.createElement('div');
   loader.classList.add('loader');
   container.appendChild(loader);
   return loader;
@@ -12,7 +12,6 @@ function renderEnemyMoveBlock(container) {
 function renderEnemyMoveScreen() {
   //отрисовка экрана
   const loader = window.application.renderBlock('enemyMoveBlock', app);
-  loader.textContent = 'Ожидание хода соперника';
 
   //  window.application.renderScreen('playScreen')
   // window.application.renderScreen('enemyMoveScreen')
