@@ -116,4 +116,4 @@ function renderAuthScreen() {
     window.application.renderBlock('authBlock', app)
 }
 
-//window.application.renderScreen('authScreen')
+window.application.renderScreen('authScreen')
