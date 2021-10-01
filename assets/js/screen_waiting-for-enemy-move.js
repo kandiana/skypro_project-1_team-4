@@ -27,10 +27,9 @@ function renderEnemyMoveScreen() {
     console.log(data);
 
     switch (
-      data['game-status'].status //конструкция исхода событий игры
+    data['game-status'].status //конструкция исхода событий игры
     ) {
       case 'waiting-for-enemy-move':
-        window.application.renderScreen('enemyMoveScreen');
         break;
       case 'waiting-for-your-move':
         window.application.renderScreen('playScreen');
@@ -38,8 +37,8 @@ function renderEnemyMoveScreen() {
       case 'win':
         window.application.renderScreen('winScreen');
         break;
-      case 'loose':
-        window.application.renderScreen('looseScreen');
+      case 'lose':
+        window.application.renderScreen('loseScreen');
         break;
     }
   }
