@@ -70,15 +70,14 @@ function renderPlayButton(container) {
 	playButton.classList.add('button')
 	container.appendChild(playButton)
 
-	// нажатие срабатывает, если
-	playButton.addEventListener('touchend', startGame)
-	window.application.renderScreen('loadingScreen')
+	playButton.addEventListener(window.application['button-pressed'], startGame)
 
 	return playButton
 }
 
 // Функция реакции на нажатие кнопки "играть"
 function startGame(event) {
+	window.application.renderScreen('loadingScreen')
 	const requestParameters = {
 		token: window.application.player.token,
 	}

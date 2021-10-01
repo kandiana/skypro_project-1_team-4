@@ -18,7 +18,7 @@ function renderLobbyButton(container) {
   lobbyButton.classList.add('button');
   container.appendChild(lobbyButton);
 
-  lobbyButton.addEventListener('touchend', () => {
+  lobbyButton.addEventListener(window.application['button-pressed'], () => {
     window.application.renderScreen('lobbyScreen');
   });
 
