@@ -1,4 +1,15 @@
-const BACKEND_DOMEN = 'http://localhost:3000'
+const getParameters = {}
+
+location.search
+	.substring(1)
+	.split('&')
+	.forEach((el) => {
+		const [key, parameter] = el.split('=')
+		getParameters[key] = decodeURIComponent(parameter)
+	})
+
+const BACKEND_DOMEN = getParameters.backend || 'http://localhost:3000'
+console.log(BACKEND_DOMEN)
 
 const app = document.querySelector('.app')
 

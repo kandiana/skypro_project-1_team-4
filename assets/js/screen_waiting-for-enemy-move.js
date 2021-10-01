@@ -1,5 +1,5 @@
-window.application.blocks['enemyMoveBlock'] = renderEnemyMoveBlock;
-window.application.screens['enemyMoveScreen'] = renderEnemyMoveScreen;
+window.application.blocks['enemyMoveBlock'] = renderEnemyMoveBlock
+window.application.screens['enemyMoveScreen'] = renderEnemyMoveScreen
 
 function renderEnemyMoveBlock(container) {
   //отрисовка блока информации экрана
@@ -13,38 +13,39 @@ function renderEnemyMoveScreen() {
   //отрисовка экрана
   const loader = window.application.renderBlock('enemyMoveBlock', app);
 
-  //  window.application.renderScreen('playScreen')
-  // window.application.renderScreen('enemyMoveScreen')
 
-  const requestParameters = {
-    token: window.application.player.token,
-    id: window.application.game.id,
-  };
+	//  window.application.renderScreen('playScreen')
+	// window.application.renderScreen('enemyMoveScreen')
 
-  function processRecievedData(responseText) {
-    const data = JSON.parse(responseText);
-    console.log(data);
+	const requestParameters = {
+		token: window.application.player.token,
+		id: window.application.game.id,
+	}
 
-    switch (
-    data['game-status'].status //конструкция исхода событий игры
-    ) {
-      case 'waiting-for-enemy-move':
-        break;
-      case 'waiting-for-your-move':
-        window.application.renderScreen('playScreen');
-        break;
-      case 'win':
-        window.application.renderScreen('winScreen');
-        break;
-      case 'lose':
-        window.application.renderScreen('loseScreen');
-        break;
-    }
-  }
+	function processRecievedData(responseText) {
+		const data = JSON.parse(responseText)
+		console.log(data)
 
-  const timer = setInterval(
-    () => request('game-status', requestParameters, processRecievedData),
-    500
-  );
-  window.application.timers.push(timer);
+		switch (
+			data['game-status'].status //конструкция исхода событий игры
+		) {
+			case 'waiting-for-enemy-move':
+				break
+			case 'waiting-for-your-move':
+				window.application.renderScreen('drawScreen')
+				setTimeout(() => {
+					window.application.renderScreen('playScreen')
+				}, 1000)
+				break
+			case 'win':
+				window.application.renderScreen('winScreen')
+				break
+			case 'lose':
+				window.application.renderScreen('loseScreen')
+				break
+		}
+	}
+
+	const timer = setInterval(() => request('game-status', requestParameters, processRecievedData), 500)
+	window.application.timers.push(timer)
 }
