@@ -7,16 +7,18 @@
 }
 
 .lobby__players {
-	max-height: 50%;
-	margin: 0 0 20px;
-	padding: 10px;
-	overflow-y: scroll;
-	list-style: none;
-	font-size: 20px;
-	text-align: center;
-	flex-grow: 1;
+	border-radius: 6px;
+    max-height: 50%;
+    margin: 0 0 20px;
+    padding: 10px;
+    overflow-y: scroll;
+    list-style: none;
+    font-size: 20px;
+    text-align: center;
+    flex-grow: 1;
+    background: rgba(70, 50, 140, 0.2);
 }
 
 .lobby__players_you {
-	color: blue;
+	color: rgb(255, 255, 255);
 }
