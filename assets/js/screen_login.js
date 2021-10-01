@@ -1,69 +1,119 @@
-window.application.blocks['screenTitle'] = renderScreenTitle;
-window.application.blocks['input'] = renderInput;
-window.application.blocks['login-button'] = renderloginButton;
-window.application.screens['auth'] = renderAuthScreen;
+window.application.blocks['mainTitle'] = renderMainTitle
+window.application.blocks['loginButton'] = renderLoginButton
+window.application.blocks['input'] = renderInput
+window.application.blocks['authBlock'] = renderAuthBlock
+window.application.screens['authScreen'] = renderAuthScreen
 
-// Функция отрисовки заголовка
-function renderScreenTitle(container) {
-  const screenTitle = document.createElement('h1');
-  screenTitle.classList.add('title');
-  container.appendChild(screenTitle);
+//Функция отрисовки блока заголовка
+function renderMainTitle(container) {
+    const mainTitle = document.createElement('h1')
+    mainTitle.classList.add('mainTitle')
+    container.appendChild(mainTitle)
 
-  return screenTitle;
+    return mainTitle
 }
 
-// Функция отрисовки поля ввода
+//Функция отрисовки блока инпут
 function renderInput(container) {
-  const input = document.createElement('input');
-  input.classList.add('input');
+    const input = document.createElement('input')
+    input.classList.add('input')
+    container.appendChild(input)
 
-  container.appendChild(input);
-
-  return input;
+    return input
 }
 
-// Функция отрисовки кнопки "Начать играть"
-function renderloginButton(container) {
-    const loginButton = document.createElement('button');
-    loginButton.classList.add('button');
+//Функция отрисовки кнопки
+function renderLoginButton(container) {
+    const loginbutton = document.createElement('button')
+    loginbutton.classList.add('button')
+    container.appendChild(loginbutton)
 
-    container.appendChild(loginButton);
-
-    return loginButton;
+    return loginbutton
 }
 
-// Функция отрисовки экрана Логин
-function renderAuthScreen() {
-    app.textContent = ''; 
-    const mainTitle = window.application.renderBlock('screenTitle', app);
-    mainTitle.textContent = 'Камень, ножницы, бумага';
+//Функция отрисовки блока авторизации
+function renderAuthBlock(container) {
+    const div = document.createElement('div')
+    div.classList.add('authBlock')
+    container.appendChild(div)
 
-    const input = window.application.renderBlock('input', app);
-    input.placeholder = 'Ваш логин';
+    const mainTitle = window.application.renderBlock('mainTitle', div)
+    mainTitle.textContent = 'Камень, ножницы, бумага'
 
-    const loginButton = window.application.renderBlock('login-button', app);
-    loginButton.textContent = 'Начать играть';
+    const input = window.application.renderBlock('input', div)
+    input.placeholder = 'Введите логин'
 
-    loginButton.addEventListener('touchend', function () {
-        if (input.value !== ''){
-            window.application.player.login = input.value;
-        }
-        
-        // достаем информацию, необходимую для запроса
-        const requestParameters = {
-            token: window.application.player.token,
-        }
-        // Функция обработки полученных данных
-        function processRecievedData(responseText) {
-            const data = JSON.parse(responseText)
-            window.application.player.token = data.token
-            if (window.application.player.token !== '') {
-                window.application.renderScreen('lobbyScreen')
+    //Делаем недопустимым вводить символы
+    const symbols = ['!', '"', '@', '#', '№', ';', '$', '%', '^', ':', '?', '&', '*', '(', ')', '+', '=', '{', '}', '[', ']', '<', '>', ',', ' ']
+
+    input.addEventListener('input', function () {
+        let value = input.value
+        for (let i = 0; i < symbols.length; i++) {
+            if (value.includes(symbols[i])) {
+                let newValue = value.replace((symbols[i]), '')
+                input.value = newValue
             }
+
         }
-    request('login', requestParameters, processRecievedData)
-    }
+
+    })
+
+
+    const loginbutton = window.application.renderBlock('loginButton', div)
+    loginbutton.textContent = 'Войти'
+
+    //По нажатию на кнопку отправляем запрос
+    loginbutton.addEventListener('touchend', function () {
+
+        //Проверяем, если в поле ввода ничего нет, выходим из функции
+        if (input.value === '') {
+            return;
+        }
+
+        //Параметры, необходимые для запроса
+        const requestParameters = {
+            login: input.value
+        }
+
+        console.log(requestParameters)
+        //Функция обработки полученных данных
+        function recievedData(responseText) {
+            const data = JSON.parse(responseText)
+            console.log(data)
+            window.application.player['token'] = data.token
+
+            //После получения токена, делаем запрос статуса
+            const requestParameters = {
+                token: window.application.player.token
+            }
+
+            console.log(requestParameters)
+            //Функция обработки полученных данных
+            function recievedData(responseText) {
+                const data = JSON.parse(responseText)
+
+                if (data['player-status'].status === 'lobby') {
+                    window.application.renderScreen('lobbyScreen')
+                } else if (data['player-status'].status === 'game') {
+                    window.application.renderScreen('playScreen')
+                }
+
+            }
+
+            request('player-status', requestParameters, recievedData)
+        }
+
+        request('login', requestParameters, recievedData)
+
+
+    })
+
+    return div
 }
 
-// вызов отрисовки экрана
-//window.application.renderScreen('auth');
+//Функция отрисовки экрана
+function renderAuthScreen() {
+    window.application.renderBlock('authBlock', app)
+}
+
+//window.application.renderScreen('authScreen')
