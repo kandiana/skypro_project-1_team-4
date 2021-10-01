@@ -13,7 +13,6 @@ function renderEnemyMoveScreen() {
   //отрисовка экрана
   const loader = window.application.renderBlock('enemyMoveBlock', app);
 
-
 	//  window.application.renderScreen('playScreen')
 	// window.application.renderScreen('enemyMoveScreen')
 

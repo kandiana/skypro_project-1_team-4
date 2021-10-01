@@ -7,6 +7,10 @@
 }
 
 .lobby__players {
+<<<<<<< HEAD
+=======
+    width: 80%;
+>>>>>>> cad3590 (add some cosmetic)
 	border-radius: 6px;
     max-height: 50%;
     margin: 0 0 20px;
