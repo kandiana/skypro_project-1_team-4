@@ -60,8 +60,8 @@ window.application = {
 
 	moves: {
 		rock: 'Камень',
-		paper: 'Ножницы',
-		scissors: 'Бумага'
+		scissors: 'Ножницы',
+		paper: 'Бумага'
 	},
 
 	styles: {
