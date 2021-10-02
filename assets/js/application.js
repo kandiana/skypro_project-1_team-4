@@ -13,10 +13,6 @@ console.log(BACKEND_DOMEN)
 
 const app = document.querySelector('.app')
 
-// тоже своеобразная константа: на телефонах ест адресная строка, которая отъедает кусок от экрана неизвестного размера
-// строчка ниже же ставит высоту страницы равной высоте видимого окна
-document.body.style.height = `${window.innerHeight}px`
-
 window.application = {
 	blocks: {},
 	screens: {},
