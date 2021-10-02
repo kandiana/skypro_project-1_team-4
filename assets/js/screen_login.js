@@ -88,8 +88,16 @@ function renderAuthBlock(container) {
         window.application.renderScreen('loadingScreen')
 
         // Сохраняем введенные параметры
-        window.application.player.login = input.value
+        if(localStorage.getItem('login') !== input.value) {
+            localStorage.setItem('game-id', '')
+	        localStorage.setItem('game-move', '')
+	        localStorage.setItem('game-enemy', '')
+        }
         localStorage.setItem('login', input.value)
+        window.application.player.login = input.value
+        window.application.game.id = localStorage.getItem('game-id')
+	    window.application.game.move = localStorage.getItem('game-move')
+	    window.application.game.enemy = localStorage.getItem('game-enemy')
 
         // Параметры, необходимые для запроса
         const requestParameters = {
