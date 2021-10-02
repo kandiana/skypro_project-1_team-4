@@ -1,4 +1,5 @@
 window.application.blocks['mainTitle'] = renderMainTitle
+window.application.blocks['text'] = renderText
 window.application.blocks['loginButton'] = renderLoginButton
 window.application.blocks['input'] = renderInput
 window.application.blocks['authBlock'] = renderAuthBlock
@@ -13,13 +14,21 @@ function renderMainTitle(container) {
     return mainTitle
 }
 
+function renderText(container) {
+    const text = document.createElement('p')
+    text.classList.add('text')
+    container.appendChild(text)
+
+    return text
+}
+
 //Функция отрисовки блока инпут
 function renderInput(container) {
     const input = document.createElement('input')
     input.classList.add('input')
     container.appendChild(input)
 
-    if(window.application.player.login) {
+    if (window.application.player.login) {
         input.value = window.application.player.login
     }
 
@@ -47,6 +56,8 @@ function renderAuthBlock(container) {
 
     const input = window.application.renderBlock('input', div)
     input.placeholder = 'Введите логин'
+    const text = window.application.renderBlock('text', div)
+    text.textContent = 'Допустимые символы: буквы, цифры, " . "  "_"  " - "'
 
     //Делаем недопустимым вводить символы
     const symbols = ['!', '"', '@', '#', '№', ';', '$', '%', '^', ':', '?', '&', '*', '(', ')', '+', '=', '{', '}', '[', ']', '<', '>', ',', ' ']
@@ -79,7 +90,7 @@ function renderAuthBlock(container) {
         // Сохраняем введенные параметры
         window.application.player.login = input.value
         localStorage.setItem('login', input.value)
-        
+
         // Параметры, необходимые для запроса
         const requestParameters = {
             login: input.value

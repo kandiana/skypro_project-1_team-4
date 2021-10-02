@@ -9,7 +9,7 @@
 .lobby__players {
     width: 80%;
 	border-radius: 6px;
-    max-height: 270px;
+    max-height: 40vh;
     margin: 0 0 20px;
     padding: 10px;
     overflow-y: scroll;
