@@ -128,6 +128,8 @@ function processRecievedGameStatusData(responseText) {
 
 // Функция отрисовки экрана Лобби
 function renderLobbyScreen() {
+	window.application.renderBlock('settingsBlock', app)
+
 	for (let item in window.application.game) {
 		item = undefined
 	}

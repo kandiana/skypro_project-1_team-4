@@ -2,6 +2,7 @@ window.application.screens['waitingForEnemyScreen'] = renderWaitingForEnemyScree
 
 //Функция отрисовки экрана
 function renderWaitingForEnemyScreen() {
+	window.application.renderBlock('settingsBlock', app)
 
 	const waitingForEnemyScreenTitle = window.application.renderBlock('screenTitle', app)
 	waitingForEnemyScreenTitle.textContent = 'Ждем подключения другого игрока'
@@ -18,6 +19,12 @@ function renderWaitingForEnemyScreen() {
 	function recievedData(responseText) {
 		const data = JSON.parse(responseText)
 		console.log(data)
+		
+		if(data.status === 'error') {
+			window.application.renderScreen('lobbyScreen')
+			return
+		}
+
 		if (data['game-status'].status === 'waiting-for-start') {
 			return
 		}

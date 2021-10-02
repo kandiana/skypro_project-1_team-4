@@ -28,6 +28,7 @@ function renderLobbyButton(container) {
 
 function renderWinScreen() {
   //функция отрисовки экрана победы
+  window.application.renderBlock('settingsBlock', app)
 
   const winBlock = window.application.renderBlock('winBlock', app);
   winBlock.textContent = 'Вы победили!';

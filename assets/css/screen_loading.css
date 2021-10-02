@@ -1,5 +1,5 @@
 :root {
-	--loader-background: linear-gradient(rgb(115, 115, 228), rgb(181, 116, 235));
+	--loader-background-color: linear-gradient(rgb(115, 115, 228), rgb(181, 116, 235));
 }
 
 .cssload-thecube {

@@ -2,6 +2,8 @@ window.application.screens['enemyMoveScreen'] = renderEnemyMoveScreen
 
 function renderEnemyMoveScreen() {
 	//отрисовка экрана
+	window.application.renderBlock('settingsBlock', app)
+
 	const waitingForEnemyMoveTitle = window.application.renderBlock('screenTitle', app)
 	waitingForEnemyMoveTitle.textContent = 'Ожидание хода соперника'
 
@@ -18,6 +20,11 @@ function renderEnemyMoveScreen() {
 	function processRecievedData(responseText) {
 		const data = JSON.parse(responseText)
 		console.log(data)
+
+		if(data.status === 'error') {
+			window.application.renderScreen('lobbyScreen')
+			return
+		}
 
 		switch (
 		data['game-status'].status //конструкция исхода событий игры

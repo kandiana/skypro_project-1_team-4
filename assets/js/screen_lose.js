@@ -28,6 +28,7 @@ function renderLobbyButton(container) {
 
 function renderLoseScreen() {
   //функция отрисовки экрана поражения
+  window.application.renderBlock('settingsBlock', app)
 
   const loseBlock = window.application.renderBlock('loseBlock', app);
   loseBlock.textContent = 'Вы проиграли!';

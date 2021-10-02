@@ -63,6 +63,17 @@ window.application = {
 		paper: 'Бумага'
 	},
 
+	styles: {
+		loader: {
+			'styles-default': 'linear-gradient(rgb(115, 115, 228), rgb(181, 116, 235))',
+			'styles-black-and-white': 'linear-gradient(black, white)'
+		},
+		body: {
+			'styles-default': '#63a3ff',
+			'styles-black-and-white': 'gray'
+		}
+	},
+
 	settings: {
 		styles: 'styles-default',
 		names: 'names-default'

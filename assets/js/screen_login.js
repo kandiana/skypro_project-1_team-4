@@ -133,13 +133,18 @@ function loadLastScreen() {
     //Функция обработки полученных данных
     function recievedData(responseText) {
         const data = JSON.parse(responseText)
+
+        if(data.status === 'error') {
+            window.application.renderScreen('authScreen')
+            return
+        }
         
         if (data['player-status'].status === 'lobby') {
             window.application.renderScreen('lobbyScreen')
         } else if (data['player-status'].status === 'game') {
             localStorage.setItem('game-id', data['player-status'].game.id)
             window.application.game.id = localStorage.getItem('game-id')
-            
+
             //Делаем запрос на статус игры
             const requestParameters = {
                 token: window.application.player.token,
@@ -189,6 +194,8 @@ function loadLastScreen() {
 
 //Функция отрисовки экрана
 function renderAuthScreen() {
+    window.application.renderBlock('settingsBlock', app)
+
     window.application.renderBlock('authBlock', app)
 }
 

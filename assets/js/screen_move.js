@@ -70,6 +70,7 @@ function renderPlayBlock(container) {
         function recievedData(responseText) {
             const data = JSON.parse(responseText)
             console.log(data)
+
             switch (data['game-status'].status) {
                 case 'waiting-for-your-move':
                     window.application.renderScreen('drawScreen')
@@ -100,6 +101,8 @@ function renderPlayBlock(container) {
 
 //Функция отрисовки экрана
 function renderPlayScreen() {
+    window.application.renderBlock('settingsBlock', app)
+
     const title = window.application.renderBlock('screenTitle', app)
     title.textContent = 'Ход'
 

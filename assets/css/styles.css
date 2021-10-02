@@ -75,6 +75,7 @@ body {
 	align-self: center;
 	justify-self: flex-end;
 	transition: 0.5s;
+	cursor: pointer;
 }
 
 .button_styles-default {
@@ -85,8 +86,20 @@ body {
 }
 
 .button_styles-dark {
-	color: #ceefef;
+	color: #e0e0e0;
 	border-color: rgb(132, 82, 224);
 	box-shadow: 0 5px 15px 0 rgb(52, 225, 255);
 	background: linear-gradient(rgb(115, 115, 228), rgb(181, 116, 235));
+}
+
+.settings {
+	position: absolute;
+	top: 20px;
+	right: 0;
+	width: 40px;
+	cursor: pointer;
+}
+
+.settings svg{
+	fill: rgb(0, 0, 0, 0.5);
 }
