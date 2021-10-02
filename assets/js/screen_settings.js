@@ -64,7 +64,7 @@ function renderFormBlock(container) {
     radioInputStylesDefault.name = 'styles'
     const inputLabelStylesDefault = window.application.renderBlock('inputLabelBlock', divStylesDefault)
     inputLabelStylesDefault.htmlFor = 'styles-default'
-    inputLabelStylesDefault.textContent = 'Голубой'
+    inputLabelStylesDefault.textContent = 'Голубо-розовый'
     fieldSetStyles.appendChild(divStylesDefault)
 
     const divStylesDark = document.createElement('div')
