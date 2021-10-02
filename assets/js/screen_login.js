@@ -30,6 +30,7 @@ function renderInput(container) {
 function renderLoginButton(container) {
     const loginbutton = document.createElement('button')
     loginbutton.classList.add('button')
+    loginbutton.classList.add(window.application.styles['button-style-class'])
     container.appendChild(loginbutton)
 
     return loginbutton
