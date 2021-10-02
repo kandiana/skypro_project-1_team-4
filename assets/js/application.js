@@ -64,7 +64,14 @@ window.application = {
 
 	styles: {
 		'main-background-parameters': {},
-		'loader-background-color': 'linear-gradient(rgb(115, 115, 228), rgb(181, 116, 235))',
+		'loader-background-color': {
+			'theme-default': 'linear-gradient(rgb(115, 115, 228), rgb(181, 116, 235))'
+		},
 		'button-style-class': 'button_theme-default'
+	},
+
+	settings: {
+		styles: 'styles-default',
+		names: 'names-default'
 	}
 }
