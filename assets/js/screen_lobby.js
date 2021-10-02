@@ -72,6 +72,7 @@ function renderPlayButton(container) {
 
 	// нажатие срабатывает, если
 	playButton.addEventListener('touchend', startGame)
+	window.application.renderScreen('loadingScreen')
 
 	return playButton
 }

@@ -6,98 +6,98 @@ window.application.screens['playScreen'] = renderPlayScreen
 //Функция отрисовки заголовка
 
 function renderScreenTitle(container) {
-	const screenTitle = document.createElement('h1')
-	screenTitle.classList.add('title')
-	container.appendChild(screenTitle)
+    const screenTitle = document.createElement('h1')
+    screenTitle.classList.add('title')
+    container.appendChild(screenTitle)
 
-	return screenTitle
+    return screenTitle
 }
 
 //Функция отрисовки кнопки
 function renderButton(container) {
-	const button = document.createElement('button')
-	button.classList.add('button')
-	container.appendChild(button)
-	return button
+    const button = document.createElement('button')
+    button.classList.add('button')
+    container.appendChild(button)
+    return button
 }
 
 //Функция отрисовки блока игры
 function renderPlayBlock(container) {
-	//создаем контейнер для кнопок
-	const div = document.createElement('div')
-	div.classList.add('playBlock')
-	container.appendChild(div)
+    //создаем контейнер для кнопок
+    const div = document.createElement('div')
+    div.classList.add('playBlock')
+    container.appendChild(div)
 
-	//отрисовка кнопки "Камень"
-	const rock = window.application.renderBlock('moveButton', div)
+    //отрисовка кнопки "Камень"
+    const rock = window.application.renderBlock('moveButton', div)
 
-	rock.dataset.name = 'rock'
-	rock.textContent = 'Камень'
+    rock.dataset.name = 'rock'
+    rock.textContent = 'Камень'
 
-	//отрисовка кнопки "Ножницы"
-	const scissors = window.application.renderBlock('moveButton', div)
-	scissors.dataset.name = 'scissors'
-	scissors.textContent = 'Ножницы'
+    //отрисовка кнопки "Ножницы"
+    const scissors = window.application.renderBlock('moveButton', div)
+    scissors.dataset.name = 'scissors'
+    scissors.textContent = 'Ножницы'
 
-	//отрисовка кнопки "Бумага"
+    //отрисовка кнопки "Бумага"
 
-	const paper = window.application.renderBlock('moveButton', div)
-	paper.dataset.name = 'paper'
-	paper.textContent = 'Бумага'
+    const paper = window.application.renderBlock('moveButton', div)
+    paper.dataset.name = 'paper'
+    paper.textContent = 'Бумага'
 
-	//По нажатию на кнопку отправляем запрос
-	div.addEventListener('touchend', function (e) {
-		console.log(e)
-		console.log(e.target.dataset.name)
-		//Параметры, необходимые для запроса
-		const requestParameters = {
-			token: window.application.player.token,
-			id: window.application.game.id,
-			move: `${e.target.dataset.name}`,
-		}
-		window.application.game.move = `${e.target.dataset.name}`
+    //По нажатию на кнопку отправляем запрос
+    div.addEventListener('touchend', function (e) {
+        window.application.renderScreen('loadingScreen')
 
-		console.log(requestParameters)
-		//Функция обработки полученных данных
-		function recievedData(responseText) {
-			const data = JSON.parse(responseText)
-			console.log(data)
-			switch (data['game-status'].status) {
-				case 'waiting-for-your-move':
-					window.application.renderScreen('drawScreen')
-					setTimeout(() => {
-						window.application.renderScreen('playScreen')
-					}, 1000)
+        //Параметры, необходимые для запроса
+        const requestParameters = {
+            token: window.application.player.token,
+            id: window.application.game.id,
+            move: `${e.target.dataset.name}`,
+        }
+        window.application.game.move = `${e.target.dataset.name}`
 
-				case 'waiting-for-enemy-move':
-					window.application.renderScreen('enemyMoveScreen')
-					break
+        console.log(requestParameters)
+        //Функция обработки полученных данных
+        function recievedData(responseText) {
+            const data = JSON.parse(responseText)
+            console.log(data)
+            switch (data['game-status'].status) {
+                case 'waiting-for-your-move':
+                    window.application.renderScreen('drawScreen')
+                    setTimeout(() => {
+                        window.application.renderScreen('playScreen')
+                    }, 1000)
 
-				case 'win':
-					window.application.renderScreen('winScreen')
-					break
+                case 'waiting-for-enemy-move':
+                    window.application.renderScreen('enemyMoveScreen')
+                    break
 
-				case 'lose':
-					window.application.renderScreen('loseScreen')
-					break
-			}
-		}
+                case 'win':
+                    window.application.renderScreen('winScreen')
+                    break
 
-		request('play', requestParameters, recievedData)
+                case 'lose':
+                    window.application.renderScreen('loseScreen')
+                    break
+            }
+        }
 
-		return div
-	})
+        request('play', requestParameters, recievedData)
+
+        return div
+    })
 }
 
 //Функция отрисовки экрана
 function renderPlayScreen() {
-	const title = window.application.renderBlock('screenTitle', app)
-	title.textContent = 'Ход'
+    const title = window.application.renderBlock('screenTitle', app)
+    title.textContent = 'Ход'
 
-	const enemy = window.application.renderBlock('playerInfoLine', app)
-	enemy.textContent = window.application.game.enemy
+    const enemy = window.application.renderBlock('playerInfoLine', app)
+    enemy.textContent = window.application.game.enemy
 
-	window.application.renderBlock('playBlock', app)
+    window.application.renderBlock('playBlock', app)
 }
 
 /*window.application.renderScreen('playScreen')*/
