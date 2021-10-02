@@ -23,7 +23,7 @@ function renderWaitingForEnemyScreen() {
 		}
 
 		window.application.game.enemy = data['game-status'].enemy.login
-		localStorage.getItem('game-enemy', window.application.game.enemy)
+		localStorage.setItem('game-enemy', window.application.game.enemy)
 		window.application.renderScreen('playScreen')
 	}
 
