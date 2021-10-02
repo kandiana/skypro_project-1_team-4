@@ -1,8 +1,7 @@
 .cssload-thecube {
 	width: 100px;
 	height: 100px;
-	margin: 0 auto;
-	margin-top: 49px;
+	margin: 20px;
 	position: relative;
 	transform: rotateZ(45deg);
 		-o-transform: rotateZ(45deg);

@@ -18,6 +18,8 @@ window.application = {
 	screens: {},
 
 	renderScreen: function (screenName) {
+		app.style['min-height'] = `${window.innerHeight}px`
+		
 		//Проходимся по массиву timers
 		for (let timer of window.application.timers) {
 			clearInterval(timer) //отменяем setInterval на каждом элементе

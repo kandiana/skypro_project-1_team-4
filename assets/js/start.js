@@ -1,6 +1,6 @@
 function start() {
-	const body = document.body
-	body.style['min-height'] = `${window.innerHeight}px`
+	const app = document.querySelector('.app')
+	app.style.height = 'auto'
 
 	window.application.renderScreen('loadingScreen')
 
