@@ -10,7 +10,7 @@ function renderMoveInfoBlock(container) {
 }
 
 function renderDrawScreen() {
-	const title = window.application.renderBlock('title', app)
+	const title = window.application.renderBlock('screenTitle', app)
 	title.textContent = 'Ничья'
 
 	const youBlock = window.application.renderBlock('moveInfoBlock', app)

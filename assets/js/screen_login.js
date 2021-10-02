@@ -133,10 +133,8 @@ function renderAuthBlock(container) {
                                 break
 
                             case 'waiting-for-your-move':
-                                window.application.renderScreen('drawScreen')
-                                setTimeout(() => {
                                     window.application.renderScreen('playScreen')
-                                }, 1000)
+                                    break
 
                             case 'waiting-for-enemy-move':
                                 window.application.renderScreen('enemyMoveScreen')
