@@ -68,6 +68,7 @@ function renderPlayerInfoLine(container) {
 function renderPlayButton(container) {
 	const playButton = document.createElement('button')
 	playButton.classList.add('button')
+	playButton.classList.add(window.application.styles['button-style-class'])
 	container.appendChild(playButton)
 
 	playButton.addEventListener(window.application['button-pressed'], startGame)

@@ -31,18 +31,21 @@ body {
 }
 
 .button {
-	color: #311010;
 	margin: 20px;
-	border-color: rgb(132, 82, 224);
 	outline: none;
 	min-width: 200px;
 	padding: 10px 20px;
 	border-radius: 10px;
-	font-family: 'Manrope', sans-serif;
-	font-size: 20px;
+	font-family: inherit;
+	font-size: inherit;
 	text-align: center;
 	justify-self: flex-end;
-	box-shadow: 0 5px 15px 0 rgb(52, 225, 255);
 	transition: 0.5s;
+}
+
+.button_theme-default {
+	color: #311010;
+	border-color: rgb(132, 82, 224);
+	box-shadow: 0 5px 15px 0 rgb(52, 225, 255);
 	background: linear-gradient(rgb(115, 115, 228), rgb(181, 116, 235));
 }

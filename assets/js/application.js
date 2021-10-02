@@ -65,5 +65,7 @@ window.application = {
 	},
 
 	styles: {
+		'background-parameters': {},
+		'button-style-class': 'button_theme-default'
 	}
 }

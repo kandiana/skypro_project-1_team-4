@@ -16,6 +16,7 @@ function renderLobbyButton(container) {
   //создание кнопки "Перейти в лобби"
   const lobbyButton = document.createElement('button');
   lobbyButton.classList.add('button');
+  lobbyButton.classList.add(window.application.styles['button-style-class'])
   container.appendChild(lobbyButton);
 
   lobbyButton.addEventListener(window.application['button-pressed'], () => {
