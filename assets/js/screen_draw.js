@@ -10,18 +10,23 @@ function renderMoveInfoBlock(container) {
 }
 
 function renderDrawScreen() {
+	const title = window.application.renderBlock('title', app)
+	title.textContent = 'Ничья'
+
 	const youBlock = window.application.renderBlock('moveInfoBlock', app)
 
-	const youText = window.application.renderBlock('playerInfoLine', youBlock)
-	youText.textContent = window.application.player.login
+	const youName = window.application.renderBlock('playerInfoLine', youBlock)
+	youName.classList.add('draw__subtitle')
+	youName.textContent = window.application.player.login
 
 	const youMove = window.application.renderBlock('playerInfoLine', youBlock)
 	youMove.textContent = window.application.game.move
 
 	const enemyBlock = window.application.renderBlock('moveInfoBlock', app)
 
-	const enemy = window.application.renderBlock('playerInfoLine', enemyBlock)
-	enemy.textContent = window.application.game.enemy
+	const enemyName = window.application.renderBlock('playerInfoLine', enemyBlock)
+	enemyName.classList.add('draw__subtitle')
+	enemyName.textContent = window.application.game.enemy
 
 	const enemyMove = window.application.renderBlock('playerInfoLine', enemyBlock)
 	enemyMove.textContent = window.application.game.move
