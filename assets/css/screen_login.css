@@ -6,9 +6,10 @@
 
 input {
 	color: #311010;
-	margin-top: 20px;
+	margin-top: 40%;
 	outline: none;
-	min-width: 200px;
+	width: 80%;
+	max-width: 300px;
 	padding: 10px 20px;
 	border-radius: 10px;
 	font-family: 'Manrope', sans-serif;
@@ -28,4 +29,9 @@ input {
 	font-weight: 700;
 	margin-bottom: -10px;
 	margin-top: -2px;
+	text-align: center;
+}
+
+.hint {
+	margin: 5px 0 20px;
 }

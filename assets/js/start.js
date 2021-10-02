@@ -1,8 +1,6 @@
 function start() {
-	// const body = document.body
-
-	//	пример изменения переменной css
-	//	body.style.setProperty('--main-background-color', '#cccccc')
+	const body = document.body
+	body.style['min-height'] = `${window.innerHeight}px`
 
 	window.application.renderScreen('loadingScreen')
 
@@ -22,3 +20,4 @@ function start() {
 }
 
 start()
+
