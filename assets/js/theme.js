@@ -4,6 +4,14 @@ window.application.blocks['inputLabelBlock'] = renderInputLabelBlock
 window.application.blocks['legendBlock'] = renderLegendBlock
 window.application.blocks['inputFormBlock'] = renderFormBlock
 window.application.blocks['fieldSetBlock'] = renderFieldSetBlock
+window.application.blocks['settingsButton'] = renderSettingsButton
+
+function renderSettingsButton(container) {
+    const button = document.createElement('button')
+    button.classList.add('button')
+    button.innerText = 'Сохранить'
+    return button
+}
 
 function renderLegendBlock(container) {
     const legend = document.createElement('legend')
@@ -88,7 +96,6 @@ function renderFormBlock(container) {
     fieldSetNames.appendChild(divNamesMagic)
     
     const saveButton = window.application.renderBlock('button', form)
-    saveButton.innerText = 'Сохранить'
     
     return form
 }
@@ -100,6 +107,7 @@ function renderSettingsScreen() {
     const form = window.application.renderBlock('inputFormBlock', app)  
     const radioStyles = document.querySelector(`#${window.application.settings.styles}`)
     radioStyles.checked = true
+    console.log(radioStyles)
 
     const radioNames = document.querySelector(`#${window.application.settings.names}`)
     radioNames.checked = true
