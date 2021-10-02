@@ -17,7 +17,7 @@ function renderScreenTitle(container) {
 function renderButton(container) {
     const button = document.createElement('button')
     button.classList.add('button')
-    button.classList.add(window.application.styles['button-style-class'])
+    button.classList.add(`button_${window.application.settings.styles}`)
     container.appendChild(button)
     return button
 }

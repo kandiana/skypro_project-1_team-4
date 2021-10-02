@@ -14,7 +14,6 @@ function renderLoadingBlock(container) {
     const loading_block = document.createElement('div')
     container.appendChild(loading_block)
     loading_block.classList.add('cssload-thecube')
-    loading_block.style.setProperty('--loader-background', window.application.styles['loader-background-color'])
 
     const load_c1 = window.application.renderBlock('loading', loading_block)
     load_c1.classList.add('cssload-cube')

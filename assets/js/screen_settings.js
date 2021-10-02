@@ -9,12 +9,15 @@ window.application.blocks['settingsButton'] = renderSettingsButton
 function renderSettingsButton(container) {
     const button = document.createElement('button')
     button.classList.add('button')
+    button.classList.add(`button_${window.application.settings.styles}`)
     button.innerText = 'Сохранить'
+    container.appendChild(button)
     return button
 }
 
 function renderLegendBlock(container) {
     const legend = document.createElement('legend')
+    legend.classList.add('form__legend')
     container.appendChild(legend)
     return legend
 }
@@ -36,6 +39,7 @@ function renderInputLabelBlock(container) {
 
 function renderFieldSetBlock(container) {
     const fieldSet = document.createElement('fieldset')
+    fieldSet.classList.add('form__fieldset')
     container.appendChild(fieldSet)
     return fieldSet
 }
@@ -43,7 +47,7 @@ function renderFieldSetBlock(container) {
 function renderFormBlock(container) {
     const form = document.createElement('form')
     form.classList.add('form')
-    form.action = '#'
+    form.action = '/settings'
     container.appendChild(form)
 
     const fieldSetStyles = window.application.renderBlock('fieldSetBlock', form)
@@ -54,7 +58,8 @@ function renderFormBlock(container) {
     divStylesDefault.classList.add('form__control')
     const radioInputStylesDefault = window.application.renderBlock('radioInputBlock', divStylesDefault)
     radioInputStylesDefault.id = 'styles-default'
-    radioInputStylesDefault.value = 'theme-default'
+    radioInputStylesDefault.value = 'styles-default'
+    radioInputStylesDefault.name = 'styles'
     const inputLabelStylesDefault = window.application.renderBlock('inputLabelBlock', divStylesDefault)
     inputLabelStylesDefault.htmlFor = 'styles-default'
     inputLabelStylesDefault.textContent = 'Основной'
@@ -64,7 +69,8 @@ function renderFormBlock(container) {
     divStylesDark.classList.add('form__control')
     const radioInputStylesDark = window.application.renderBlock('radioInputBlock', divStylesDark)
     radioInputStylesDark.id = 'styles-dark'
-    radioInputStylesDark.value = 'theme-dark'
+    radioInputStylesDark.value = 'styles-dark'
+    radioInputStylesDark.name = 'styles'
     const inputLabelStylesDark = window.application.renderBlock('inputLabelBlock', divStylesDark)
     inputLabelStylesDark.htmlFor = 'styles-dark'
     inputLabelStylesDark.textContent = 'Темный'
@@ -79,6 +85,7 @@ function renderFormBlock(container) {
     const radioInputNamesDefault = window.application.renderBlock('radioInputBlock', divNamesDefault)
     radioInputNamesDefault.id = 'names-default'
     radioInputNamesDefault.value = 'names-default'
+    radioInputNamesDefault.name = 'names'
     const inputLabelNamesDefault = window.application.renderBlock('inputLabelBlock', divNamesDefault)
     inputLabelNamesDefault.htmlFor = 'names-default'
     inputLabelNamesDefault.innerHTML = 'Камень<br>Ножницы<br>Бумага'
@@ -90,12 +97,23 @@ function renderFormBlock(container) {
     const radioInputNamesMagic = window.application.renderBlock('radioInputBlock', divNamesMagic)
     radioInputNamesMagic.id = 'names-magic'
     radioInputNamesMagic.value = 'names-magic'
+    radioInputNamesMagic.name = 'names'
     const inputLabelNamesMagic = window.application.renderBlock('inputLabelBlock', divNamesMagic)
     inputLabelNamesMagic.htmlFor = 'names-magic'
     inputLabelNamesMagic.innerHTML = 'Принцесса<br>Рыцарь<br>Дракон'
     fieldSetNames.appendChild(divNamesMagic)
     
-    const saveButton = window.application.renderBlock('button', form)
+    const saveButton = window.application.renderBlock('settingsButton', form)
+
+    form.addEventListener('change', (event) => {
+        event.preventDefault()
+        
+    })
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault()
+        loadLastScreen()
+    })
     
     return form
 }

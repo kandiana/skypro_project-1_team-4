@@ -8,7 +8,8 @@ location.search
 		getParameters[key] = decodeURIComponent(parameter)
 	})
 
-const BACKEND_DOMEN = getParameters.backend || 'http://localhost:3000'
+//const BACKEND_DOMEN = getParameters.backend || 'http://localhost:3000'
+const BACKEND_DOMEN = getParameters.backend || 'https://skypro-rock-scissors-paper.herokuapp.com'
 console.log(BACKEND_DOMEN)
 
 const app = document.querySelector('.app')
@@ -60,14 +61,6 @@ window.application = {
 		rock: 'Камень',
 		scissors: 'Ножницы',
 		paper: 'Бумага'
-	},
-
-	styles: {
-		'main-background-parameters': {},
-		'loader-background-color': {
-			'theme-default': 'linear-gradient(rgb(115, 115, 228), rgb(181, 116, 235))'
-		},
-		'button-style-class': 'button_theme-default'
 	},
 
 	settings: {
