@@ -28,7 +28,7 @@ function renderEnemyMoveScreen() {
 				window.application.renderScreen('drawScreen')
 				setTimeout(() => {
 					window.application.renderScreen('playScreen')
-				}, 1000)
+				}, 1500)
 				break
 			case 'win':
 				window.application.renderScreen('winScreen')

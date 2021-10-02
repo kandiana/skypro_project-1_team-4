@@ -134,6 +134,9 @@ function renderLobbyScreen() {
 	localStorage.setItem('game-id', '')
 	localStorage.setItem('game-move', '')
 	localStorage.getItem('game-enemy', '')
+	window.application.game.id = ''
+	window.application.game.move = ''
+	window.application.game.enemy = ''
 
 	const lobbyTitle = window.application.renderBlock('screenTitle', app)
 	lobbyTitle.textContent = 'Лобби'
