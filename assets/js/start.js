@@ -2,15 +2,24 @@ function start() {
 	const app = document.querySelector('.app')
 	app.style.height = 'auto'
 
-	if(!localStorage.getItem('loader-background-color')) {
-		localStorage.setItem('loader-background-color', window.application.styles.loader['styles-default'])
+	if(!localStorage.getItem('styles')) {
+		localStorage.setItem('styles', 'styles-default')
 	}
 
-	if(!localStorage.getItem('main-background-color')) {
-		localStorage.setItem('main-background-color', window.application.styles.body['styles-default'])
+	if(!localStorage.getItem('images')) {
+		localStorage.setItem('images', 'images-default')
 	}
 
-	document.body.style.setProperty('--main-background-color', localStorage.getItem('main-background-color'))
+	if(!localStorage.getItem('names')) {
+		localStorage.setItem('names', 'names-default')
+	}
+
+	window.application.settings.styles = localStorage.getItem('styles')
+	window.application.settings.images = localStorage.getItem('images')
+	window.application.settings.names = localStorage.getItem('names')
+
+	document.body.style.setProperty('--main-background-color', window.application.styles.body[localStorage.getItem('styles')])
+	document.body.style.setProperty('--main-background-image', window.application.styles['body-image'][localStorage.getItem('images')])
 
 	window.application.renderScreen('loadingScreen')
 

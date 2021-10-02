@@ -113,6 +113,11 @@ function processRecievedGameStatusData(responseText) {
 	const gameResponse = JSON.parse(responseText)
 	console.log(gameResponse)
 
+	if(gameResponse.status === 'error') {
+		window.application.renderScreen('lobbyScreen')
+		return
+	}
+
 	// Подгружаем разные экраны в зависимости от наличия противника
 	switch (gameResponse['game-status'].status) {
 		case 'waiting-for-start':

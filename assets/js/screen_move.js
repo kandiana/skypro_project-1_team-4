@@ -32,25 +32,27 @@ function renderPlayBlock(container) {
     //отрисовка кнопки "Камень"
     const rock = window.application.renderBlock('moveButton', div)
 
+    const names = window.application.settings.names
+
     rock.dataset.name = 'rock'
-    rock.textContent = window.application.moves.rock
+    rock.textContent = window.application.names[names].rock
     const text_button_rock = window.application.renderBlock('text', div)
-    text_button_rock.textContent = `${window.application.moves.rock} > ${window.application.moves.scissors}`
+    text_button_rock.textContent = `${window.application.names[names].rock} > ${window.application.names[names].scissors}`
 
     //отрисовка кнопки "Ножницы"
     const scissors = window.application.renderBlock('moveButton', div)
     scissors.dataset.name = 'scissors'
-    scissors.textContent = window.application.moves.scissors
+    scissors.textContent = window.application.names[names].scissors
     const text_button_scissors = window.application.renderBlock('text', div)
-    text_button_scissors.textContent = `${window.application.moves.scissors} > ${window.application.moves.paper}`
+    text_button_scissors.textContent = `${window.application.names[names].scissors} > ${window.application.names[names].paper}`
 
     //отрисовка кнопки "Бумага"
 
     const paper = window.application.renderBlock('moveButton', div)
     paper.dataset.name = 'paper'
-    paper.textContent = window.application.moves.paper
+    paper.textContent = window.application.names[names].paper
     const text_button_paper = window.application.renderBlock('text', div)
-    text_button_paper.textContent = `${window.application.moves.paper} > ${window.application.moves.rock}`
+    text_button_paper.textContent = `${window.application.names[names].paper} > ${window.application.names[names].rock}`
 
     //По нажатию на кнопку отправляем запрос
     //По нажатию на кнопку отправляем запрос
@@ -63,7 +65,7 @@ function renderPlayBlock(container) {
             id: window.application.game.id,
             move: `${e.target.dataset.name}`,
         }
-        window.application.game.move = window.application.moves[`${e.target.dataset.name}`]
+        window.application.game.move = window.application.names[names][`${e.target.dataset.name}`]
 
         console.log(requestParameters)
         //Функция обработки полученных данных
@@ -107,7 +109,7 @@ function renderPlayScreen() {
     title.textContent = 'Ход'
 
     const enemy = window.application.renderBlock('playerInfoLine', app)
-    enemy.textContent = window.application.game.enemy
+    enemy.textContent = `Соперник: ${window.application.game.enemy}`
 
     window.application.renderBlock('playBlock', app)
 }

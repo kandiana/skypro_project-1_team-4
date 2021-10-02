@@ -64,7 +64,7 @@ function renderFormBlock(container) {
     radioInputStylesDefault.name = 'styles'
     const inputLabelStylesDefault = window.application.renderBlock('inputLabelBlock', divStylesDefault)
     inputLabelStylesDefault.htmlFor = 'styles-default'
-    inputLabelStylesDefault.textContent = 'Основной'
+    inputLabelStylesDefault.textContent = 'Голубой'
     fieldSetStyles.appendChild(divStylesDefault)
 
     const divStylesDark = document.createElement('div')
@@ -75,8 +75,34 @@ function renderFormBlock(container) {
     radioInputStylesDark.name = 'styles'
     const inputLabelStylesDark = window.application.renderBlock('inputLabelBlock', divStylesDark)
     inputLabelStylesDark.htmlFor = 'styles-black-and-white'
-    inputLabelStylesDark.textContent = 'Темный'
+    inputLabelStylesDark.textContent = 'Черно-белый'
     fieldSetStyles.appendChild(divStylesDark)
+
+    const fieldSetImages = window.application.renderBlock('fieldSetBlock', form)
+    const legendImages = window.application.renderBlock('legendBlock', fieldSetImages)
+    legendImages.textContent = 'Фон'
+
+    const divImagesDefault = document.createElement('div')
+    divImagesDefault.classList.add('form__control')
+    const radioInputImagesDefault = window.application.renderBlock('radioInputBlock', divImagesDefault)
+    radioInputImagesDefault.id = 'images-default'
+    radioInputImagesDefault.value = 'images-default'
+    radioInputImagesDefault.name = 'images'
+    const inputLabelImagesDefault = window.application.renderBlock('inputLabelBlock', divImagesDefault)
+    inputLabelImagesDefault.htmlFor = 'images-default'
+    inputLabelImagesDefault.textContent = 'Треугольники'
+    fieldSetImages.appendChild(divImagesDefault)
+
+    const divImagesZigZag = document.createElement('div')
+    divImagesZigZag.classList.add('form__control')
+    const radioInputImagesZigZag = window.application.renderBlock('radioInputBlock', divImagesZigZag)
+    radioInputImagesZigZag.id = 'images-zigzag'
+    radioInputImagesZigZag.value = 'images-zigzag'
+    radioInputImagesZigZag.name = 'images'
+    const inputLabelImagesZigZag = window.application.renderBlock('inputLabelBlock', divImagesZigZag)
+    inputLabelImagesZigZag.htmlFor = 'images-zigzag'
+    inputLabelImagesZigZag.textContent = 'Зигзаг'
+    fieldSetImages.appendChild(divImagesZigZag)
    
     const fieldSetNames = window.application.renderBlock('fieldSetBlock', form) 
     const legendNames = window.application.renderBlock('legendBlock', fieldSetNames)
@@ -107,9 +133,31 @@ function renderFormBlock(container) {
     
     const saveButton = window.application.renderBlock('settingsButton', form)
 
-    form.addEventListener('change', (event) => {
-        event.preventDefault()
-        
+    form.addEventListener('change', function (event) {
+        const target = event.target
+        switch(target.name) {
+            case 'styles':
+                localStorage.setItem('styles', target.defaultValue)
+                window.application.settings.styles = target.defaultValue
+
+                document.body.style.setProperty('--main-background-color', window.application.styles.body[target.defaultValue])
+
+                saveButton.classList = ['button']
+                saveButton.classList.add(`button_${window.application.settings.styles}`)
+                return
+
+            case 'images':
+                localStorage.setItem('images', target.defaultValue)
+                window.application.settings.images = target.defaultValue
+
+                document.body.style.setProperty('--main-background-image', window.application.styles['body-image'][target.defaultValue])
+                return
+
+            case 'names':
+                localStorage.setItem('names', target.defaultValue)
+                window.application.settings.names = target.defaultValue
+                return
+        }
     })
 
     form.addEventListener('submit', (event) => {
@@ -124,10 +172,13 @@ function renderSettingsScreen() {
     const title = window.application.renderBlock('screenTitle', app)
     title.textContent = 'Настройки'
 
-    const form = window.application.renderBlock('inputFormBlock', app)  
+    const form = window.application.renderBlock('inputFormBlock', app) 
+
     const radioStyles = document.querySelector(`#${window.application.settings.styles}`)
     radioStyles.checked = true
-    console.log(radioStyles)
+
+    const radioImages = document.querySelector(`#${window.application.settings.images}`)
+    radioImages.checked = true
 
     const radioNames = document.querySelector(`#${window.application.settings.names}`)
     radioNames.checked = true
