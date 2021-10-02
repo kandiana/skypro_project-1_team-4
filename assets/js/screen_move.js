@@ -34,30 +34,36 @@ function renderPlayBlock(container) {
 
     rock.dataset.name = 'rock'
     rock.textContent = window.application.moves.rock
+    const text_button_rock = window.application.renderBlock('text', div)
+    text_button_rock.textContent = `${window.application.moves.rock} > ${window.application.moves.scissors}`
 
     //отрисовка кнопки "Ножницы"
     const scissors = window.application.renderBlock('moveButton', div)
     scissors.dataset.name = 'scissors'
     scissors.textContent = window.application.moves.scissors
+    const text_button_scissors = window.application.renderBlock('text', div)
+    text_button_scissors.textContent = `${window.application.moves.scissors} > ${window.application.moves.paper}`
 
     //отрисовка кнопки "Бумага"
 
     const paper = window.application.renderBlock('moveButton', div)
     paper.dataset.name = 'paper'
     paper.textContent = window.application.moves.paper
+    const text_button_paper = window.application.renderBlock('text', div)
+    text_button_paper.textContent = `${window.application.moves.paper} > ${window.application.moves.rock}`
 
     //По нажатию на кнопку отправляем запрос
     //По нажатию на кнопку отправляем запрос
-	div.addEventListener(window.application['button-pressed'], function (e) {
-		console.log(e)
-		console.log(e.target.dataset.name)
-		//Параметры, необходимые для запроса
-		const requestParameters = {
-			token: window.application.player.token,
-			id: window.application.game.id,
-			move: `${e.target.dataset.name}`,
-		}
-		window.application.game.move = window.application.moves[`${e.target.dataset.name}`]
+    div.addEventListener(window.application['button-pressed'], function (e) {
+        console.log(e)
+        console.log(e.target.dataset.name)
+        //Параметры, необходимые для запроса
+        const requestParameters = {
+            token: window.application.player.token,
+            id: window.application.game.id,
+            move: `${e.target.dataset.name}`,
+        }
+        window.application.game.move = window.application.moves[`${e.target.dataset.name}`]
 
         console.log(requestParameters)
         //Функция обработки полученных данных

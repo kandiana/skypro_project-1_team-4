@@ -6,7 +6,7 @@
 
 input {
 	color: #311010;
-	margin: 20px;
+	margin-top: 20px;
 	outline: none;
 	min-width: 200px;
 	padding: 10px 20px;
@@ -19,4 +19,11 @@ input {
 .mainTitle {
 	max-width: 200px;
 	text-align: center;
+}
+
+.text {
+	font-size: 15px;
+	font-weight: 700;
+	margin-bottom: -10px;
+	margin-top: -2px;
 }
