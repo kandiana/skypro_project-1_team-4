@@ -19,7 +19,7 @@ window.application = {
 
 	renderScreen: function (screenName) {
 		app.style['min-height'] = `${window.innerHeight}px`
-		
+
 		//Проходимся по массиву timers
 		for (let timer of window.application.timers) {
 			clearInterval(timer) //отменяем setInterval на каждом элементе
@@ -63,7 +63,8 @@ window.application = {
 	},
 
 	styles: {
-		'background-parameters': {},
+		'main-background-parameters': {},
+		'loader-background-color': 'linear-gradient(rgb(115, 115, 228), rgb(181, 116, 235))',
 		'button-style-class': 'button_theme-default'
 	}
 }
