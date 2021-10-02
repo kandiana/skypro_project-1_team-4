@@ -52,7 +52,7 @@ function renderAuthBlock(container) {
     container.appendChild(div)
 
     const mainTitle = window.application.renderBlock('mainTitle', div)
-    mainTitle.textContent = 'Камень ножницы бумага'
+    mainTitle.textContent = 'Камень Ножницы Бумага'
 
     const input = window.application.renderBlock('input', div)
     input.placeholder = 'Введите логин'
