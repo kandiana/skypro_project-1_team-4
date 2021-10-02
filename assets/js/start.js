@@ -1,8 +1,6 @@
 function start() {
-	// const body = document.body
-
-	//	пример изменения переменной css
-	//	body.style.setProperty('--main-background-color', '#cccccc')
+	const app = document.querySelector('.app')
+	app.style.height = 'auto'
 
 	window.application.renderScreen('loadingScreen')
 
@@ -22,3 +20,4 @@ function start() {
 }
 
 start()
+

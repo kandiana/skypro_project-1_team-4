@@ -7,6 +7,9 @@
 }
 
 .lobby__players {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
     width: 80%;
 	border-radius: 6px;
     max-height: 40vh;

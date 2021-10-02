@@ -57,7 +57,8 @@ function renderAuthBlock(container) {
     const input = window.application.renderBlock('input', div)
     input.placeholder = 'Введите логин'
     const text = window.application.renderBlock('text', div)
-    text.textContent = 'Допустимые символы: буквы, цифры, " . "  "_"  " - "'
+    text.classList.add('hint')
+    text.innerHTML = 'Допустимые символы:<br>буквы, цифры, " . "  "_"  " - "'
 
     //Делаем недопустимым вводить символы
     const symbols = ['!', '"', '@', '#', '№', ';', '$', '%', '^', ':', '?', '&', '*', '(', ')', '+', '=', '{', '}', '[', ']', '<', '>', ',', ' ']
