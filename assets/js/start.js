@@ -3,7 +3,8 @@ function start() {
 
 	//	пример изменения переменной css
 	//	body.style.setProperty('--main-background-color', '#cccccc')
-
+	const body = document.body
+	body.style.height = `${window.innerHeight}px`
 	window.application.player.login = localStorage.getItem('login')
 
 	//определяем, какое события прослушивать в зависимости от браузера
