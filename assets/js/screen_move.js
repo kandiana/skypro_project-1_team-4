@@ -76,6 +76,7 @@ function renderPlayBlock(container) {
                     setTimeout(() => {
                         window.application.renderScreen('playScreen')
                     }, 1000)
+                    break
 
                 case 'waiting-for-enemy-move':
                     window.application.renderScreen('enemyMoveScreen')
