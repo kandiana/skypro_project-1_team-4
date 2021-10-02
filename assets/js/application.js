@@ -57,4 +57,13 @@ window.application = {
 
 	player: {},
 	game: {},
+
+	moves: {
+		rock: 'Камень',
+		paper: 'Ножницы',
+		scissors: 'Бумага'
+	},
+
+	styles: {
+	}
 }
