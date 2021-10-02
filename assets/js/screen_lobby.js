@@ -19,6 +19,8 @@ function renderPlayersList(container) {
 	playersList.classList.add('lobby__players')
 	container.appendChild(playersList)
 
+	window.application.renderBlock('blockLoading', playersList)
+
 	// достаем информацию, необходимую для запроса
 	const requestParameters = {
 		token: window.application.player.token,
@@ -79,6 +81,7 @@ function renderPlayButton(container) {
 // Функция реакции на нажатие кнопки "играть"
 function startGame(event) {
 	window.application.renderScreen('loadingScreen')
+
 	const requestParameters = {
 		token: window.application.player.token,
 	}
@@ -94,6 +97,7 @@ function processRecievedGameStartData(responseText) {
 
 	window.application.game.id = startGameResponse['player-status'].game.id
 	window.application.player.status = startGameResponse['player-status'].status
+	localStorage.setItem('game-id', window.application.game.id)
 
 	const requestParameters = {
 		token: window.application.player.token,
@@ -116,6 +120,7 @@ function processRecievedGameStatusData(responseText) {
 			break
 		case 'waiting-for-your-move':
 			window.application.game.enemy = gameResponse['game-status'].enemy.login
+			localStorage.getItem('game-enemy', window.application.game.enemy)
 			window.application.renderScreen('playScreen')
 			break
 	}
@@ -126,6 +131,9 @@ function renderLobbyScreen() {
 	for (let item in window.application.game) {
 		item = undefined
 	}
+	localStorage.setItem('game-id', '')
+	localStorage.setItem('game-move', '')
+	localStorage.getItem('game-enemy', '')
 
 	const lobbyTitle = window.application.renderBlock('screenTitle', app)
 	lobbyTitle.textContent = 'Лобби'
