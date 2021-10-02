@@ -27,6 +27,7 @@
 }
 
 body {
+	height: 100%;
 	position: absolute;
 	font-family: 'Manrope', sans-serif;
 	font-size: 20px;
