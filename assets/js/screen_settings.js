@@ -12,7 +12,7 @@ function renderSettingsButton(container) {
     const button = document.createElement('button')
     button.classList.add('button')
     button.classList.add(`button_${window.application.settings.styles}`)
-    button.innerText = 'Сохранить'
+    button.innerText = 'Назад'
     container.appendChild(button)
     return button
 }
@@ -131,7 +131,7 @@ function renderFormBlock(container) {
     inputLabelNamesMagic.innerHTML = 'Принцесса<br>Рыцарь<br>Дракон'
     fieldSetNames.appendChild(divNamesMagic)
     
-    const saveButton = window.application.renderBlock('settingsButton', form)
+    const backButton = window.application.renderBlock('settingsButton', form)
 
     form.addEventListener('change', function (event) {
         const target = event.target
@@ -142,8 +142,8 @@ function renderFormBlock(container) {
 
                 document.body.style.setProperty('--main-background-color', window.application.styles.body[target.defaultValue])
 
-                saveButton.classList = ['button']
-                saveButton.classList.add(`button_${window.application.settings.styles}`)
+                backButton.classList = ['button']
+                backButton.classList.add(`button_${window.application.settings.styles}`)
                 return
 
             case 'images':

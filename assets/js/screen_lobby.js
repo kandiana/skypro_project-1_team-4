@@ -112,7 +112,7 @@ function processRecievedGameStatusData(responseText) {
 	const gameResponse = JSON.parse(responseText)
 
 	if(gameResponse.status === 'error') {
-		window.application.renderScreen('lobbyScreen')
+		loadLastScreen()
 		return
 	}
 
