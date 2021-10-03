@@ -87,7 +87,7 @@ body {
 	color: black;
 	border-color: black;
 	box-shadow: 0 5px 15px 0 white;
-	background: linear-gradient(black, white);
+	background: linear-gradient(rgb(70, 64, 64), white);
 }
 
 .settings {
