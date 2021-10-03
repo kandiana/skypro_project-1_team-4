@@ -57,7 +57,7 @@ window.application = {
 	styles: {
 		loader: {
 			'styles-default': 'linear-gradient(rgb(115, 115, 228), rgb(181, 116, 235))',
-			'styles-black-and-white': 'linear-gradient(black, white)'
+			'styles-black-and-white': 'linear-gradient(rgb(70, 64, 64), white)'
 		},
 		body: {
 			'styles-default': '#63a3ff',
