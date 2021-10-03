@@ -13,8 +13,11 @@ function renderLoading(container) {
 function renderLoadingBlock(container) {
     const loading_block = document.createElement('div')
     container.appendChild(loading_block)
+    
+    const styles = window.application.settings.styles
+
+    loading_block.style.setProperty('--loader-background-color', window.application.styles.loader[styles])
     loading_block.classList.add('cssload-thecube')
-    loading_block.style.setProperty('--loader-background', window.application.styles['loader-background-color'])
 
     const load_c1 = window.application.renderBlock('loading', loading_block)
     load_c1.classList.add('cssload-cube')
@@ -36,5 +39,7 @@ function renderLoadingBlock(container) {
 }
 
 function renderLoadingScreen() {
+    window.application.renderBlock('settingsBlock', app)
+
     window.application.renderBlock('blockLoading', app)
 }

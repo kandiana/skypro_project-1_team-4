@@ -39,7 +39,7 @@ function renderInput(container) {
 function renderLoginButton(container) {
     const loginbutton = document.createElement('button')
     loginbutton.classList.add('button')
-    loginbutton.classList.add(window.application.styles['button-style-class'])
+    loginbutton.classList.add(`button_${window.application.settings.styles}`)
     container.appendChild(loginbutton)
 
     return loginbutton
@@ -105,65 +105,13 @@ function renderAuthBlock(container) {
             login: input.value
         }
 
-        console.log(requestParameters)
         //Функция обработки полученных данных
         function recievedData(responseText) {
             const data = JSON.parse(responseText)
-            console.log(data)
+
             window.application.player['token'] = data.token
 
-            //После получения токена, делаем запрос статуса
-            const requestParameters = {
-                token: window.application.player.token
-            }
-
-            console.log(requestParameters)
-            //Функция обработки полученных данных
-            function recievedData(responseText) {
-                const data = JSON.parse(responseText)
-
-                if (data['player-status'].status === 'lobby') {
-                    window.application.renderScreen('lobbyScreen')
-                } else if (data['player-status'].status === 'game') {
-                    //Делаем запрос на статус игры
-                    const requestParameters = {
-                        token: window.application.player.token,
-                        id: window.application.game.id
-                    }
-                    console.log(requestParameters)
-
-                    function recievedData(responseText) {
-                        const data = JSON.parse(responseText)
-                        console.log(data)
-
-                        switch (data['game-status'].status) {
-                            case 'waiting-for-start':
-                                window.application.renderScreen('waitingForEnemyScreen')
-                                break
-
-                            case 'waiting-for-your-move':
-                                    window.application.renderScreen('playScreen')
-                                    break
-
-                            case 'waiting-for-enemy-move':
-                                window.application.renderScreen('enemyMoveScreen')
-                                break
-
-                            case 'win':
-                                window.application.renderScreen('winScreen')
-                                break
-
-                            case 'lose':
-                                window.application.renderScreen('loseScreen')
-                                break
-                        }
-                    }
-                    request('game-status', requestParameters, recievedData)
-                }
-
-            }
-
-            request('player-status', requestParameters, recievedData)
+            loadLastScreen()
         }
 
         request('login', requestParameters, recievedData)
@@ -174,8 +122,76 @@ function renderAuthBlock(container) {
     return div
 }
 
+function loadLastScreen() {
+    //После получения токена, делаем запрос статуса
+    const requestParameters = {
+        token: window.application.player.token
+    }
+    
+    //Функция обработки полученных данных
+    function recievedData(responseText) {
+        const data = JSON.parse(responseText)
+
+        if(data.status === 'error') {
+            window.application.renderScreen('authScreen')
+            return
+        }
+        
+        if (data['player-status'].status === 'lobby') {
+            window.application.renderScreen('lobbyScreen')
+        } else if (data['player-status'].status === 'game') {
+            localStorage.setItem('game-id', data['player-status'].game.id)
+            window.application.game.id = localStorage.getItem('game-id')
+
+            //Делаем запрос на статус игры
+            const requestParameters = {
+                token: window.application.player.token,
+                id: window.application.game.id
+            }
+        
+            function recievedData(responseText) {
+                const data = JSON.parse(responseText)
+        
+                switch (data['game-status'].status) {
+                    case 'waiting-for-start':
+                        window.application.renderScreen('waitingForEnemyScreen')
+                        break
+        
+                    case 'waiting-for-your-move':
+                        localStorage.setItem('game-enemy', data['game-status'].enemy.login)
+	                    window.application.game.enemy = localStorage.getItem('game-enemy')
+
+                        window.application.renderScreen('playScreen')
+                        break
+        
+                    case 'waiting-for-enemy-move':
+                        localStorage.setItem('game-enemy', data['game-status'].enemy.login)
+	                    window.application.game.enemy = localStorage.getItem('game-enemy')
+
+                        window.application.renderScreen('enemyMoveScreen')
+                        break
+        
+                    case 'win':
+                        window.application.renderScreen('winScreen')
+                        break
+        
+                    case 'lose':
+                        window.application.renderScreen('loseScreen')
+                        break
+                }
+            }
+            request('game-status', requestParameters, recievedData)
+        }
+        
+    }
+        
+    request('player-status', requestParameters, recievedData)
+}
+
 //Функция отрисовки экрана
 function renderAuthScreen() {
+    window.application.renderBlock('settingsBlock', app)
+
     window.application.renderBlock('authBlock', app)
 }
 

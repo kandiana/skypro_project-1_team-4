@@ -39,6 +39,7 @@ body {
 	box-sizing: border-box;
 	background-color: var(--main-background-color);
 	background-image: var(--main-background-image);
+	color: var(--main-text-color)
 }
 
 .app {
@@ -55,8 +56,8 @@ body {
 }
 
 .title {
-	color: #112949;
 	margin: 0 0 10px;
+	font-size: 36px;
 	text-align: center;
 }
 
@@ -69,13 +70,34 @@ body {
 	font-family: inherit;
 	font-size: inherit;
 	text-align: center;
+	align-self: center;
 	justify-self: flex-end;
 	transition: 0.5s;
+	cursor: pointer;
 }
 
-.button_theme-default {
+.button_styles-default {
 	color: #311010;
 	border-color: rgb(132, 82, 224);
 	box-shadow: 0 5px 15px 0 rgb(52, 225, 255);
 	background: linear-gradient(rgb(115, 115, 228), rgb(181, 116, 235));
+}
+
+.button_styles-black-and-white {
+	color: black;
+	border-color: black;
+	box-shadow: 0 5px 15px 0 white;
+	background: linear-gradient(black, white);
+}
+
+.settings {
+	position: absolute;
+	top: 20px;
+	right: 0;
+	width: 40px;
+	cursor: pointer;
+}
+
+.settings svg{
+	fill: rgb(0, 0, 0, 0.5);
 }

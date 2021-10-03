@@ -70,7 +70,7 @@ function renderPlayerInfoLine(container) {
 function renderPlayButton(container) {
 	const playButton = document.createElement('button')
 	playButton.classList.add('button')
-	playButton.classList.add(window.application.styles['button-style-class'])
+	playButton.classList.add(`button_${window.application.settings.styles}`)
 	container.appendChild(playButton)
 
 	playButton.addEventListener(window.application['button-pressed'], startGame)
@@ -93,7 +93,6 @@ function startGame(event) {
 // Функция обработки запроса начала игры
 function processRecievedGameStartData(responseText) {
 	const startGameResponse = JSON.parse(responseText)
-	console.log(startGameResponse)
 
 	window.application.game.id = startGameResponse['player-status'].game.id
 	window.application.player.status = startGameResponse['player-status'].status
@@ -111,7 +110,11 @@ function processRecievedGameStartData(responseText) {
 // Функция обработки запроса статуса игры
 function processRecievedGameStatusData(responseText) {
 	const gameResponse = JSON.parse(responseText)
-	console.log(gameResponse)
+
+	if(gameResponse.status === 'error') {
+		loadLastScreen()
+		return
+	}
 
 	// Подгружаем разные экраны в зависимости от наличия противника
 	switch (gameResponse['game-status'].status) {
@@ -128,6 +131,8 @@ function processRecievedGameStatusData(responseText) {
 
 // Функция отрисовки экрана Лобби
 function renderLobbyScreen() {
+	window.application.renderBlock('settingsBlock', app)
+
 	for (let item in window.application.game) {
 		item = undefined
 	}
@@ -146,6 +151,3 @@ function renderLobbyScreen() {
 	const playButton = window.application.renderBlock('playButton', app)
 	playButton.textContent = 'Играть'
 }
-
-// функцию ниже надо запустить в консоли
-// window.application.renderScreen('lobbyScreen')

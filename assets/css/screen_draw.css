@@ -4,7 +4,6 @@
 }
 
 .move__info:last-child {
-    display: flex;
     margin-bottom: 0;
 }
 

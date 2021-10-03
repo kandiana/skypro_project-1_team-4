@@ -10,6 +10,8 @@ function renderMoveInfoBlock(container) {
 }
 
 function renderDrawScreen() {
+	window.application.renderBlock('settingsBlock', app)
+
 	const title = window.application.renderBlock('screenTitle', app)
 	title.textContent = 'Ничья'
 

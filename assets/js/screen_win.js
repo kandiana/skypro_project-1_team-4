@@ -16,7 +16,7 @@ function renderLobbyButton(container) {
   //создание кнопки "Перейти в лобби"
   const lobbyButton = document.createElement('button');
   lobbyButton.classList.add('button');
-  lobbyButton.classList.add(window.application.styles['button-style-class'])
+  lobbyButton.classList.add(`button_${window.application.settings.styles}`)
   container.appendChild(lobbyButton);
 
   lobbyButton.addEventListener(window.application['button-pressed'], () => {
@@ -28,6 +28,7 @@ function renderLobbyButton(container) {
 
 function renderWinScreen() {
   //функция отрисовки экрана победы
+  window.application.renderBlock('settingsBlock', app)
 
   const winBlock = window.application.renderBlock('winBlock', app);
   winBlock.textContent = 'Вы победили!';
