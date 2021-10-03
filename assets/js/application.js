@@ -30,7 +30,6 @@ window.application = {
 
 		//Проверяем существует ли страница, которую передаем в функцию
 		if (window.application.screens[screenName] === undefined) {
-			console.log(`Страница ${screenName} не существует`)
 			return
 		}
 
@@ -39,13 +38,11 @@ window.application = {
 
 		//Вызываем функцию из поля screens
 		window.application.screens[screenName]()
-		console.log(`Страница ${screenName} отрисована`)
 	},
 
 	renderBlock: function (blockName, container) {
 		//Проверяем существует ли блок, который передаем в функцию
 		if (window.application.blocks[blockName] === undefined) {
-			console.log(`Блок ${blockName} не существует`)
 			return
 		}
 		//Вызываем функцию из поля blocks

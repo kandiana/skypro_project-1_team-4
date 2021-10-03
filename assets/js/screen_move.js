@@ -57,8 +57,6 @@ function renderPlayBlock(container) {
     //По нажатию на кнопку отправляем запрос
     //По нажатию на кнопку отправляем запрос
     div.addEventListener(window.application['button-pressed'], function (e) {
-        console.log(e)
-        console.log(e.target.dataset.name)
         //Параметры, необходимые для запроса
         const requestParameters = {
             token: window.application.player.token,
@@ -67,11 +65,9 @@ function renderPlayBlock(container) {
         }
         window.application.game.move = window.application.names[names][`${e.target.dataset.name}`]
 
-        console.log(requestParameters)
         //Функция обработки полученных данных
         function recievedData(responseText) {
             const data = JSON.parse(responseText)
-            console.log(data)
 
             switch (data['game-status'].status) {
                 case 'waiting-for-your-move':

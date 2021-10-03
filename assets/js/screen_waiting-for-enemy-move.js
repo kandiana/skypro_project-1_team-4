@@ -19,7 +19,6 @@ function renderEnemyMoveScreen() {
 
 	function processRecievedData(responseText) {
 		const data = JSON.parse(responseText)
-		console.log(data)
 
 		if(data.status === 'error') {
 			window.application.renderScreen('lobbyScreen')

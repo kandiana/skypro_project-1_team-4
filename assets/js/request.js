@@ -1,8 +1,6 @@
-// Пример коллбека с искусственной задержкой в 2 секунды (чтобы можно было проверить, что показывает экран, пока ответ не пришел)
+// Тестовый колбек
 function awaitResponse(response) {
-	setTimeout(() => {
-		console.log(response)
-	}, 2000)
+	console.log(response)
 }
 
 function request(url, parameters, onSuccess) {
@@ -32,15 +30,8 @@ function request(url, parameters, onSuccess) {
 		if (target.status === 200) {
 			onSuccess(target.responseText)
 		} else {
+			console.log(target.status, target.statusText)
 			window.application.renderScreen('errorScreen')
 		}
 	})
 }
-
-/************************************************
- * Пример вызова запроса
- *
- * /ping          - request('ping', null, awaitResponse)
- * /login         - request('login', {login: '...'}, awaitResponse)
- *
- ************************************************/

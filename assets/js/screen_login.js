@@ -105,11 +105,10 @@ function renderAuthBlock(container) {
             login: input.value
         }
 
-        console.log(requestParameters)
         //Функция обработки полученных данных
         function recievedData(responseText) {
             const data = JSON.parse(responseText)
-            console.log(data)
+
             window.application.player['token'] = data.token
 
             loadLastScreen()
@@ -129,7 +128,6 @@ function loadLastScreen() {
         token: window.application.player.token
     }
     
-    console.log(requestParameters)
     //Функция обработки полученных данных
     function recievedData(responseText) {
         const data = JSON.parse(responseText)
@@ -150,11 +148,9 @@ function loadLastScreen() {
                 token: window.application.player.token,
                 id: window.application.game.id
             }
-            console.log(requestParameters)
         
             function recievedData(responseText) {
                 const data = JSON.parse(responseText)
-                console.log(data)
         
                 switch (data['game-status'].status) {
                     case 'waiting-for-start':
